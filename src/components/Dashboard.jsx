@@ -11,7 +11,6 @@ const Dashboard = () => {
     <div>
       <h2>Welcome to the Dashboard, Admin ID: {adminId}</h2>
       {/* Additional dashboard content */}
-      <Link to={`/products/${adminId}`}> Products Page</Link>
     </div>
     </>
   );
