@@ -12,7 +12,7 @@ const Products = () => {
       <>
       <Header/>
       <div>
-        <h2>Products in  {adminId}</h2>
+        <h2>Products</h2>
         {/* Additional dashboard content */}
         <ProductList/>
       </div>

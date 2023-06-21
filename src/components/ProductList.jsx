@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Card, Container, Row,Col } from "react-bootstrap";
 
 function ProductList() {
 const [tenantData, setTenantData] = useState([]);
@@ -35,16 +36,26 @@ console.error(`Error fetching product data for ${tenant.schema_name}:`, error);
 }, [tenantData]);
 
 return (
-<div>
+<div style={{ paddingLeft:"12px"}}>
 {tenantData.map((tenant) => (
 <div key={tenant.schema_name}>
-<h3>{`Products for ${tenant.schema_name}`}</h3>
+
 {productData[tenant.schema_name] ? (
-<ul>
+<Row style={{}}>
 {productData[tenant.schema_name].map((product) => (
-<li key={product.Cement}>{product.name}</li>
+<Col key={product.Cement} sm={12} md={6} lg={4} xl={3}>
+<Card className='my-3 p-5 rounded'>
+    <Card.Body>
+        <Card.Title as='div' >
+<strong>{product.name}</strong><br/>
+<h6 style={{ textTransform:"capitalize"}}>Product from:{tenant.schema_name}</h6>
+        </Card.Title>
+    </Card.Body>
+</Card>
+</Col>
+
 ))}
-</ul>
+</Row>
 ) : (
 <p>Loading products...</p>
 )}
