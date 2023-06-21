@@ -1,9 +1,13 @@
 import React from 'react'
+import Header from '../Header'
+import Productform from './Productform'
 
 const Addproduct = () => {
   return (
     <div>
-      Add Product
+      <Header/>
+      <h2> Add Product</h2>
+     <Productform/>
     </div>
   )
 }

@@ -1,8 +1,9 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import ProductList from './ProductList';
+import { Button } from 'react-bootstrap';
 
 const Products = () => {
     const { adminId } = useParams();
@@ -12,7 +13,13 @@ const Products = () => {
       <>
       <Header/>
       <div>
+        <div style={{ display:"flex", justifyContent:"space-between", padding:"2px"}}>
         <h2>Products</h2>
+        <Link to={`/addproduct/${adminId}`}>
+        <Button style={{ justifyContent:"end"}}>Add Product</Button>
+        </Link>
+        </div>
+       
         {/* Additional dashboard content */}
         <ProductList/>
       </div>
