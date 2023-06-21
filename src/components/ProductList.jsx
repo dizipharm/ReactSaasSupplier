@@ -47,7 +47,7 @@ return (
 <Card className='my-3 p-5 rounded'>
     <Card.Body>
         <Card.Title as='div' >
-<strong>{product.name}</strong><br/>
+<strong style={{ textTransform:"capitalize"}}>{product.name}</strong><br/>
 <h6 style={{ textTransform:"capitalize"}}>Product from:{tenant.schema_name}</h6>
         </Card.Title>
     </Card.Body>
