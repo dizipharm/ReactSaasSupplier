@@ -14,10 +14,8 @@ const Products = () => {
       <Header/>
       <div>
         <div style={{ display:"flex", justifyContent:"space-between", padding:"2px"}}>
-        <h2>Products</h2>
-        <Link to={`/addproduct/${adminId}`}>
-        <Button style={{ justifyContent:"end"}}>Add Product</Button>
-        </Link>
+        
+       
         </div>
        
         {/* Additional dashboard content */}

@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Card, Container, Row,Col } from "react-bootstrap";
+import { Card, Container, Row,Col, Button,Form } from "react-bootstrap";
 import Imagenew from "./../assets/Images/938.jpg"
+import { Link, useParams } from 'react-router-dom';
+import InputGroup from 'react-bootstrap/InputGroup';
+
+
 function ProductList() {
 const [tenantData, setTenantData] = useState([]);
 const [productData, setProductData] = useState({});
+const [searchQuery, setSearchQuery] = useState("");
+const { adminId } = useParams();
 
 useEffect(() => {
 // Fetch the main API to get the tenant data
@@ -37,12 +43,35 @@ console.error(`Error fetching product data for ${tenant.schema_name}:`, error);
 
 return (
 <div style={{ paddingLeft:"12px"}}>
+
+    <div style={{display:"flex", gap:"10px", justifyContent:"space-between"}}>
+        <h2>Products</h2>
+    {/* <input
+        type="text"
+        placeholder="Search products"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      /> */}
+        <InputGroup className="mb-3" style={{width:"50%"}}>
+      <InputGroup.Text style={{background:"#80ced6"}}>Search Products</InputGroup.Text>
+      <Form.Control aria-label="Search..." 
+       placeholder="Search..."
+       value={searchQuery}
+       onChange={(e) => setSearchQuery(e.target.value)}/>
+    </InputGroup>
+      <Link to={`/addproduct/${adminId}`}>
+        <Button style={{ justifyContent:"end"}}>Add Product</Button>
+        </Link>
+    </div>
+
 {tenantData.map((tenant) => (
 <div key={tenant.schema_name}>
 
 {productData[tenant.schema_name] ? (
 <Row style={{}}>
-{productData[tenant.schema_name].map((product) => (
+{productData[tenant.schema_name].filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ).map((product) => (
 <Col key={product.Cement} sm={12} md={6} lg={4} xl={3}>
 <Card className='my-3 p-5 rounded'>
     <Card.Img src={Imagenew} />
