@@ -70,7 +70,8 @@ return (
 {productData[tenant.schema_name] ? (
 <Row style={{}}>
 {productData[tenant.schema_name].filter((product) =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        tenant.schema_name.toLowerCase().includes(searchQuery.toLowerCase())
       ).map((product) => (
 <Col key={product.Cement} sm={12} md={6} lg={4} xl={3}>
 <Card className='my-3 p-5 rounded'>
