@@ -48,21 +48,57 @@ const Sidebar = () => {
             className={`menu ${activeMenu === 'orders' ? 'active' : ''}`}
             onClick={() => handleMenuClick('orders')}
           >
-            Orders
+            Order Management
           </button>
           {activeMenu === 'orders' && (
             <ul className="submenu">
               <li>
-                <a href="#">All Orders</a>
+                <a href="#">My Orders</a>
               </li>
               <li>
-                <a href="#">Pending Orders</a>
+                <a href="#">New Orders</a>
               </li>
               <li>
-                <a href="#">Completed Orders</a>
+                <a href="#">Accepted Orders</a>
+              </li>
+			   <li>
+                <a href="#">Rejected Orders</a>
               </li>
             </ul>
           )}
+        </li>
+		<li>
+		<Link to="/manage">
+          <button
+            className={`menu ${activeMenu === 'manage' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('manage')}
+          >
+			Manage Location
+            
+          </button>
+		  </Link>
+        </li>
+		<li>
+		<Link to="/location">
+          <button
+            className={`menu ${activeMenu === 't&t' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('t&t')}
+          >
+			Track & Trace Shipment
+            
+          </button>
+		  </Link>
+        </li>
+		<li>
+		<Link to="/admin">
+          <button
+            className={`menu ${activeMenu === 'admin' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('admin')}
+          >
+			Admin
+            
+          </button>
+		  </Link>
         </li>
       </ul>
     </div>
