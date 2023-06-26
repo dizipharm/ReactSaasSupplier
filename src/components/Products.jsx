@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import ProductList from './ProductList';
 import { Button } from 'react-bootstrap';
+import Sidebar from './Shared/Sidebar';
 
 const Products = () => {
     const { adminId } = useParams();
@@ -13,13 +14,20 @@ const Products = () => {
       <>
       <Header/>
       <div>
-        <div style={{ display:"flex", justifyContent:"space-between", padding:"2px"}}>
+        <div style={{ display:"flex",gap:"10px"}}>
         
+        <div>
+        <Sidebar />
+        </div>
+        <div>
+        <ProductList/>
+        </div>
+       
        
         </div>
        
         {/* Additional dashboard content */}
-        <ProductList/>
+       
       </div>
      
       </>

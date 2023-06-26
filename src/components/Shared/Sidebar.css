@@ -1,0 +1,29 @@
+.sidebar {
+    width: 200px;
+    background-color: rgb(149, 142, 196);
+  }
+  
+  .sidebar-accordion {
+    border: none;
+    width: 200px;
+    background-color: #75a3a3;
+  }
+  
+  .sidebar-link {
+    color: #af8383;
+    padding: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-link:hover {
+    background-color: #b15dae;
+    color: #2e2a2e;
+    
+  }
+  
+  .sidebar-link.active {
+    background-color: #e9ecef;
+    color: #000;
+  }
+  
