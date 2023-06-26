@@ -1,29 +1,46 @@
-.sidebar {
+.sidenav {
     width: 200px;
-    background-color: rgb(149, 142, 196);
+    background-color: #f1f1f1;
+    height: 100vh;
   }
   
-  .sidebar-accordion {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu {
     border: none;
-    width: 200px;
-    background-color: #75a3a3;
-  }
-  
-  .sidebar-link {
-    color: #af8383;
+    background-color: transparent;
     padding: 10px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .menu:hover {
+    background-color: #ddd;
+  }
+  
+  .menu.active {
+    background-color: #ccc;
+  }
+  
+  .submenu {
+    padding-left: 20px;
+    display: block;
+  }
+  
+  .submenu li {
+    padding: 5px;
+  }
+  
+  .submenu a {
     text-decoration: none;
-    transition: background-color 0.3s;
-  }
-  
-  .sidebar-link:hover {
-    background-color: #b15dae;
-    color: #2e2a2e;
-    
-  }
-  
-  .sidebar-link.active {
-    background-color: #e9ecef;
     color: #000;
+  }
+  
+  .submenu a:hover {
+    text-decoration: underline;
   }
   

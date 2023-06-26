@@ -1,45 +1,71 @@
-import React from 'react';
-import { Nav, Accordion } from 'react-bootstrap';
+import React, { useState } from 'react';
+import './Sidebar.css';
 import { Link, useParams } from 'react-router-dom';
-import './Sidebar.css'; // Import your custom styling
 
 const Sidebar = () => {
+  const [activeMenu, setActiveMenu] = useState(null);
   const { adminId } = useParams();
 
+  const handleMenuClick = (menu) => {
+    setActiveMenu(activeMenu === menu ? null : menu);
+  };
+
   return (
-    <Nav className="sidebar" style={{ background: "#75a3a3", height: "100vh" }}>
-      <Accordion className="sidebar-accordion">
-        {/* Main menu */}
-        <Accordion.Item eventKey="0">
-			
-          <Accordion.Header>Main Menu</Accordion.Header>
-          <Accordion.Body>
-            <Nav className="flex-column">
-              <Nav.Link as={Link} to={`/dashboard/${adminId}`} activeClassName="active" className="sidebar-link">
-                Dashboard
-              </Nav.Link>
-              <Nav.Link as={Link} to="/profile" activeClassName="active" className="sidebar-link">
-                Profile
-              </Nav.Link>
-            </Nav>
-          </Accordion.Body>
-        </Accordion.Item>
-        {/* Submenu */}
-        <Accordion.Item eventKey="1">
-          <Accordion.Header>Products</Accordion.Header>
-          <Accordion.Body>
-            <Nav className="flex-column">
-              <Nav.Link as={Link} to={`/products/${adminId}`} activeClassName="active" className="sidebar-link">
-              View Products
-              </Nav.Link>
-              <Nav.Link as={Link} to={`/addproduct/${adminId}`} activeClassName="active" className="sidebar-link">
-                Add Product
-              </Nav.Link>
-            </Nav>
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
-    </Nav>
+    <div className="sidenav">
+      <ul>
+        <li>
+		<Link to={`/dashboard/${adminId}`}>
+          <button
+            className={`menu ${activeMenu === 'dashboard' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('dashboard')}
+          >
+			Dashboard
+            
+          </button>
+		  </Link>
+        </li>
+        <li>
+          <button
+            className={`menu ${activeMenu === 'products' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('products')}
+          >
+            Products
+          </button>
+          {activeMenu === 'products' && (
+            <ul className="submenu">
+              <li>
+                <Link to={`/products/${adminId}`} >All Products</Link>
+              </li>
+              <li>
+                <Link to={`/addproduct/${adminId}`}>Add Product</Link>
+              </li>
+            
+            </ul>
+          )}
+        </li>
+        <li>
+          <button
+            className={`menu ${activeMenu === 'orders' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('orders')}
+          >
+            Orders
+          </button>
+          {activeMenu === 'orders' && (
+            <ul className="submenu">
+              <li>
+                <a href="#">All Orders</a>
+              </li>
+              <li>
+                <a href="#">Pending Orders</a>
+              </li>
+              <li>
+                <a href="#">Completed Orders</a>
+              </li>
+            </ul>
+          )}
+        </li>
+      </ul>
+    </div>
   );
 };
 
