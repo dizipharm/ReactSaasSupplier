@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidenav">
-      <ul>
+      <ul >
         <li>
 		<Link to={`/dashboard/${adminId}`}>
           <button

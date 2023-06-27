@@ -2,6 +2,7 @@
     width: 200px;
     background-color: #f1f1f1;
     height: 100vh;
+   
   }
   
   ul {
@@ -33,6 +34,10 @@
   
   .submenu li {
     padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+  li{
+    border-bottom: 1px solid #ccc  ;
   }
   
   .submenu a {
