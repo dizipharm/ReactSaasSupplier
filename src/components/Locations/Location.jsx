@@ -10,7 +10,8 @@ const Location = () => {
       <div style={{display:"flex", gap:"10px"}}>
         <Sidebar/>
       <div>
-      <h2> My Orders</h2>
+      <h2> Manage Location</h2>
+      <br/>
      <Location2/>
       </div>
       </div>
