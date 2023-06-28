@@ -72,7 +72,7 @@ const Productform: React.FC = () => {
           placeholder=""
           value={productName}
           onChange={(e) => setProductName(e.target.value)}
-          style={{width:"30%"}}
+          // style={{width:"100%"}}
         />
       </Form.Group>
 
@@ -83,7 +83,7 @@ const Productform: React.FC = () => {
           placeholder=""
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          style={{width:"30%"}}
+          // style={{width:"30%"}}
         />
       </Form.Group>
 
@@ -91,7 +91,7 @@ const Productform: React.FC = () => {
       <Form.Group controlId="productImage" style={{display:"flex", gap:"10px"}}>
         <Form.Label> Image</Form.Label>
         <Form.Control type="file"
-        style={{width:"30%"}}
+        // style={{width:"30%"}}
          onChange={handleImageChange} />
       </Form.Group>
 
@@ -102,7 +102,7 @@ const Productform: React.FC = () => {
           placeholder=""
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          style={{width:"30%"}}
+          // style={{width:"30%"}}
         />
       </Form.Group>
 
@@ -113,13 +113,13 @@ const Productform: React.FC = () => {
           placeholder=""
           value={productPrice}
           onChange={(e) => setProductPrice(e.target.value)}
-          style={{width:"30%"}}
+          // style={{width:"30%"}}
         />
       </Form.Group>
 
       <Form.Group controlId="productGtin" style={{display:"flex", gap:"10px"}}>
         <Form.Label>Units</Form.Label>
-        <Form.Select style={{width:"30%"}}>
+        <Form.Select >
         <option >Select the Unit</option>
         <option value="1">Euro</option>
         <option value="2">Pound</option>
@@ -136,7 +136,7 @@ const Productform: React.FC = () => {
           placeholder=""
           value={dimensions}
           onChange={(e) => setDimensions(e.target.value)}
-          style={{width:"30%"}}
+          // style={{width:"30%"}}
         />
       </Form.Group>
 
@@ -149,7 +149,7 @@ const Productform: React.FC = () => {
           placeholder=""
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
-          style={{width:"30%"}}
+          // style={{width:"30%"}}
         />
       </Form.Group>
     
@@ -163,7 +163,7 @@ const Productform: React.FC = () => {
           placeholder=""
           value={gtin}
           onChange={(e) => setGtin(e.target.value)}
-          style={{width:"30%"}}
+          // style={{width:"30%"}}
         />
       </Form.Group>
 
@@ -174,7 +174,7 @@ const Productform: React.FC = () => {
           placeholder=""
           value={gtin}
           onChange={(e) => setGtin(e.target.value)}
-          style={{width:"30%"}}
+          // style={{width:"30%"}}
         />
       </Form.Group>
       <Form.Group controlId="productGtin" style={{display:"flex", gap:"10px"}}>
@@ -184,7 +184,7 @@ const Productform: React.FC = () => {
           placeholder=""
           value={gtin}
           onChange={(e) => setGtin(e.target.value)}
-          style={{width:"30%"}}
+          // style={{width:"30%"}}
         />
       </Form.Group>
     
@@ -193,7 +193,7 @@ const Productform: React.FC = () => {
 
    
 
-      <Button variant="primary" type="submit" style={{width:"10%", justifyContent:"center"}}>
+      <Button variant="primary" type="submit" >
         Add Product
       </Button>
     </Form>
