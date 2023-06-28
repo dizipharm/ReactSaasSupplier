@@ -68,7 +68,7 @@ const Sidebar = () => {
           )}
         </li>
 		<li>
-		<Link to="/manage">
+		<Link to={`/${adminId}/location`}>
           <button
             className={`menu ${activeMenu === 'manage' ? 'active' : ''}`}
             onClick={() => handleMenuClick('manage')}

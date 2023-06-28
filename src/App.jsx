@@ -6,6 +6,7 @@ import Products from './components/Products'
 import Addproduct from './components/AddProduct/Addproduct'
 import Productscreen from './components/Productscreen'
 import Myorder2 from './components/OrderManagement/Myorder2'
+import Location from './components/Locations/Location'
 
 
 
@@ -28,6 +29,7 @@ const App = () => {
    <Route path='/addproduct/:adminId' element={<Addproduct/>}/>
    <Route path='/product/:id/:schema_name' element={<Productscreen/>}/>
    <Route  path='/:adminId/myorders' element={<Myorder2 />} />
+   <Route  path='/:adminId/location' element={<Location />} />
    </Routes>
    
      
