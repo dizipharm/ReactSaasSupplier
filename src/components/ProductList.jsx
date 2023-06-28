@@ -83,7 +83,9 @@ return (
               <Card.Img src={Imagenew} />
               <Card.Body>
                 <Card.Title as='div'>
-                  <strong style={{ textTransform: "capitalize" }}>{product.name}</strong><br />
+                <Link to={`/product/${product.name}/${tenant.schema_name}`}><strong style={{ textTransform: "capitalize" }}>{product.name}</strong>
+                </Link>
+                <br />
                   <h6 style={{ textTransform: "capitalize" }}>Product from:{tenant.schema_name}</h6>
                 </Card.Title>
               </Card.Body>

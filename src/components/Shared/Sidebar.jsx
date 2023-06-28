@@ -53,7 +53,7 @@ const Sidebar = () => {
           {activeMenu === 'orders' && (
             <ul className="submenu">
               <li>
-                <a href="#">My Orders</a>
+                <Link to={`/${adminId}/myorders`}>My Orders</Link>
               </li>
               <li>
                 <a href="#">New Orders</a>
