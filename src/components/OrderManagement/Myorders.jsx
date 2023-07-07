@@ -7,7 +7,7 @@ function Myorders() {
       <thead>
         <tr>
           <th>Date of order</th>
-          <th>Reference Number</th>
+          <th>Order Number</th>
           <th>Total Quantity</th>
           <th>Order Placed by</th>
           <th>Delivery address</th>
