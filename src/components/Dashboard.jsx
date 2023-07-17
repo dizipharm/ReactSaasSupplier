@@ -5,13 +5,13 @@ import Sidebar from './Shared/Sidebar';
 const Dashboard = () => {
   const { adminId } = useParams();
 
-
+console.log(adminId)
   return (
     <>
-    <Header/>
-    <div style={{display:"flex",gap:"10px"}}>
-      <Sidebar/>
-      <h2>Welcome to the Dashboard, Admin ID: {adminId}</h2>
+   
+    <div >
+      
+      <h2>Welcome to the Dashboard</h2>
       {/* Additional dashboard content */}
     </div>
     </>

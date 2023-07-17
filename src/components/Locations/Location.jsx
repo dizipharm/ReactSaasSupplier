@@ -6,9 +6,9 @@ import Location2 from './Location2'
 const Location = () => {
   return (
     <div>
-      <Header/>
+     
       <div style={{display:"flex", gap:"10px"}}>
-        <Sidebar/>
+       
       <div>
       <h2> Manage Location</h2>
       <br/>

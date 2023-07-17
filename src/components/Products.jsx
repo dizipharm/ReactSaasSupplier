@@ -5,6 +5,7 @@ import Footer from './Footer';
 import ProductList from './ProductList';
 import { Button } from 'react-bootstrap';
 import Sidebar from './Shared/Sidebar';
+import ProductList2 from './ProductList2';
 
 const Products = () => {
     const { adminId } = useParams();
@@ -12,15 +13,13 @@ const Products = () => {
 
     return (
       <>
-      <Header/>
+    
       <div>
-        <div style={{ display:"flex",gap:"10px"}}>
+        <div >
         
+       
         <div>
-        <Sidebar />
-        </div>
-        <div>
-        <ProductList/>
+        <ProductList2/>
         </div>
        
        

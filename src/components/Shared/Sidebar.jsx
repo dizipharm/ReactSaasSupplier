@@ -14,7 +14,7 @@ const Sidebar = () => {
     <div className="sidenav">
       <ul >
         <li>
-		<Link to={`/dashboard/${adminId}`}>
+		<Link to={`/dashboard`}>
           <button
             className={`menu ${activeMenu === 'dashboard' ? 'active' : ''}`}
             onClick={() => handleMenuClick('dashboard')}
@@ -34,10 +34,10 @@ const Sidebar = () => {
           {activeMenu === 'products' && (
             <ul className="submenu">
               <li>
-                <Link to={`/products/${adminId}`} >All Products</Link>
+                <Link to={`/dashboard/products`} >All Products</Link>
               </li>
               <li>
-                <Link to={`/addproduct/${adminId}`}>Add Product</Link>
+                <Link to={`/dashboard/addproduct`}>Add Product</Link>
               </li>
             
             </ul>
@@ -53,7 +53,7 @@ const Sidebar = () => {
           {activeMenu === 'orders' && (
             <ul className="submenu">
               <li>
-                <Link to={`/${adminId}/myorders`}>My Orders</Link>
+                <Link to={`/dashboard/myorders`}>My Orders</Link>
               </li>
               <li>
                 <a href="#">New Orders</a>
@@ -68,7 +68,7 @@ const Sidebar = () => {
           )}
         </li>
 		<li>
-		<Link to={`/${adminId}/location`}>
+		<Link to={`/dashboard/location`}>
           <button
             className={`menu ${activeMenu === 'manage' ? 'active' : ''}`}
             onClick={() => handleMenuClick('manage')}
@@ -79,7 +79,7 @@ const Sidebar = () => {
 		  </Link>
         </li>
 		<li>
-		<Link to="/location">
+		<Link to="/dashboard/location">
           <button
             className={`menu ${activeMenu === 't&t' ? 'active' : ''}`}
             onClick={() => handleMenuClick('t&t')}
@@ -90,7 +90,7 @@ const Sidebar = () => {
 		  </Link>
         </li>
 		<li>
-		<Link to="/admin">
+		<Link to="/dashboard/admin">
           <button
             className={`menu ${activeMenu === 'admin' ? 'active' : ''}`}
             onClick={() => handleMenuClick('admin')}

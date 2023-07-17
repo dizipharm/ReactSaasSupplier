@@ -6,9 +6,9 @@ import Sidebar from '../Shared/Sidebar'
 const Addproduct = () => {
   return (
     <div>
-      <Header/>
-      <div style={{display:"flex", gap:"10px"}}>
-        <Sidebar/>
+      
+      <div >
+       
       <div>
       <h2> Add Product</h2>
      <Productform/>

@@ -8,14 +8,14 @@ const Headernew = () => {
   return (
     <Navbar bg="dark" variant="dark">
         <Container>
-          <LinkContainer to={`/dashboard/${adminId}`}>
+          <LinkContainer to={`/dashboard`}>
           <Navbar.Brand >Saas Application</Navbar.Brand>
           </LinkContainer>
           <Nav className="ml-auto">
           <LinkContainer to='/cart'>
             <Nav.Link ><i className='fas fa-shopping-cart'></i>Cart</Nav.Link>
             </LinkContainer>
-            <LinkContainer to={`/dashboard/${adminId}/products`}>
+            <LinkContainer to={`/dashboard/products`}>
             <Nav.Link><i className='fas fa-user'></i>Products</Nav.Link>
             </LinkContainer>
           </Nav>

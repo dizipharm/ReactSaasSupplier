@@ -64,7 +64,7 @@ const Productform: React.FC = () => {
   };
 
   return (
-    <Form onSubmit={handleFormSubmit} style={{display:"flex", flexDirection:"column", gap:"20px", justifyItems:"center", paddingLeft:"10px"}}>
+    <Form onSubmit={handleFormSubmit} style={{display:"flex", flexDirection:"column", gap:"20px", justifyItems:"center", zIndex:"2px" }}>
       <Form.Group controlId="productName" style={{display:"flex", gap:"10px"}}>
         <Form.Label> Name</Form.Label>
         <Form.Control
