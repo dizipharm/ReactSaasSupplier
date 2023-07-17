@@ -5,18 +5,11 @@ import Productscreen from './Productscreen'
 
 const Product = () => {
   return (
-    <div>
-      <Header/>
-      <div style={{display:"flex", gap:"10px"}}>
-        <Sidebar/>
-      <div>
+    <div style={{marginTop:"10px"}}>
     
      <Productscreen/>
       </div>
-      </div>
      
-      
-    </div>
   )
 }
 
