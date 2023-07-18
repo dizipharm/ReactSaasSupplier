@@ -7,7 +7,7 @@ import './../CSS/layout.css';
 export default function Layouts() {
   return (
     <>
-      <div style={{ position: 'fixed', top: 0, left: 0, right: 0 }}>
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex:"9" }}>
         <Headernew />
       </div>
 
