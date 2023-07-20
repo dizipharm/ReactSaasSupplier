@@ -188,12 +188,7 @@ const Productform: React.FC = () => {
         />
       </Form.Group>
     
-      
-      
-
-   
-
-      <Button variant="primary" type="submit" >
+      <Button variant="primary" type="submit" style={{width:"50%"}} >
         Add Product
       </Button>
     </Form>
