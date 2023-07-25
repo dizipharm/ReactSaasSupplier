@@ -72,9 +72,13 @@ const Productscreen = () => {
                                 </Col>
                             </Row>
                         </ListGroup.Item>
-                        <ListGroup.Item>
-                            <Button className='btn-block' type='button' >
-                                Add To Cart
+                        <ListGroup.Item style={{ display:"flex", flexFlow:"column", gap:"5px"}}>
+                          
+                            <Button  type='button' >
+                                Edit
+                            </Button>
+                            <Button variant="danger" type='button' >
+                                Delete
                             </Button>
                         </ListGroup.Item>
                     </ListGroup>
