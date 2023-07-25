@@ -1,7 +1,8 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import { Form, Button, FormSelect } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { getElementGroupList, getMaterialsList, getStructuralList } from '../Services/materialService';
 
 const Productform: React.FC = () => {
   const [productName, setProductName] = useState('');
@@ -12,6 +13,8 @@ const Productform: React.FC = () => {
   const [weight, setWeight] = useState('');
   const [description, setDescription] = useState('');
   const [gtin, setGtin] = useState('');
+
+  const [materialSpecList, setMaterialSpecList] = useState([]);
 
   const navigate = useNavigate();
   const { adminId } = useParams();
@@ -63,6 +66,18 @@ const Productform: React.FC = () => {
     setProductImage(file || null);
   };
 
+  useEffect(() => {
+    getMaterialsList()
+    .then((res) => {
+      setMaterialSpecList(res.data);
+      // console.log(res.data);
+      // console.log(materialSpecList);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  })
+
   return (
     <Form onSubmit={handleFormSubmit} style={{display:"flex", flexDirection:"column", gap:"20px", justifyItems:"center", zIndex:"2px" }}>
       <Form.Group controlId="productName" style={{display:"flex", gap:"10px"}}>
@@ -78,13 +93,16 @@ const Productform: React.FC = () => {
 
       <Form.Group controlId="productCategory" style={{display:"flex", gap:"10px"}}>
         <Form.Label>Material Specifications</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder=""
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-           style={{width:"30%"}}
-        />
+        <Form.Select  style={{width:"30%"}} 
+        onChange={(e) => setCategory(e.target.value)} 
+        value={category}
+         >
+        <option >Select the Material</option>
+        {materialSpecList.map((material, index) => (
+                    <option key={index + 1} value={material['material_specification']+ ';' + (index+1)}>{material['material_specification']}</option>
+                  ))}
+
+        </Form.Select>
       </Form.Group>
 
 
