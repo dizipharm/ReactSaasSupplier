@@ -2,14 +2,25 @@ import React from 'react'
 import {LinkContainer} from 'react-router-bootstrap'
 import{ Navbar, Container, Nav} from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom';
+import Imagenew from './../../assets/Images/logo.png'
+
 
 const Headernew = () => {
   const { adminId } = useParams();
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar  style={{background:"white", color:"#ffa500"}}>
         <Container>
           <LinkContainer to={`/dashboard`}>
-          <Navbar.Brand >Saas Application</Navbar.Brand>
+          <Navbar.Brand >
+          <img
+              src={Imagenew}
+              width="150"
+              height="40"
+              className=""
+              alt="React Bootstrap logo"
+             
+            />
+          </Navbar.Brand>
           </LinkContainer>
           <Nav className="ml-auto">
           <LinkContainer to='/cart'>
