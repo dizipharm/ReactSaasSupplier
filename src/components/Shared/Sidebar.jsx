@@ -43,7 +43,20 @@ const Sidebar = () => {
             </ul>
           )}
         </li>
+
         <li>
+		<Link to={`/dashboard/ordermanagement`}>
+          <button
+            className={`menu ${activeMenu === 'ordermanagement' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('ordermanagement')}
+          >
+		Order Management
+            
+          </button>
+		  </Link>
+        </li>
+        
+        {/* <li>
           <button
             className={`menu ${activeMenu === 'orders' ? 'active' : ''}`}
             onClick={() => handleMenuClick('orders')}
@@ -66,7 +79,7 @@ const Sidebar = () => {
               </li>
             </ul>
           )}
-        </li>
+        </li> */}
 		<li>
 		<Link to={`/dashboard/location`}>
           <button

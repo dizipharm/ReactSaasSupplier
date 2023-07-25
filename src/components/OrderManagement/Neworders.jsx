@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 
-function Myorders() {
+function Neworders() {
   return (
     <Table striped bordered hover  >
       <thead>
@@ -62,4 +62,4 @@ function Myorders() {
   );
 }
 
-export default Myorders;
+export default Neworders;
