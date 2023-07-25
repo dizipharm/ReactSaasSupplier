@@ -7,7 +7,7 @@ import { getElementGroupList, getMaterialsList, getStructuralList } from '../Ser
 const Productform = () => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
-  const [productImage, setProductImage] = useState<File | null>(null);
+  const [productImage, setProductImage] = useState(null);
   const [category, setCategory] = useState('');
   const [dimensions, setDimensions] = useState('');
   const [weight, setWeight] = useState('');

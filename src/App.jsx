@@ -4,7 +4,6 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Products from "./components/Products";
 import Addproduct from "./components/AddProduct/Addproduct";
-import Productscreen from "./components/Productscreen/Productscreen";
 import Myorder2 from "./components/OrderManagement/Myorder2";
 import Location from "./components/Locations/Location";
 import Product from "./components/Productscreen/Product";
