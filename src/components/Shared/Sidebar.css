@@ -1,6 +1,6 @@
 .sidenav {
-    width: 200px;
-    background-color: #f1f1f1;
+    width: 250px;
+    background-color: #4682b4;
     height: 100vh;
     padding: 10px;
   position:fixed;
@@ -20,15 +20,21 @@
     padding: 10px;
     width: 100%;
     text-align: left;
+    color: white;
+
   }
   
   .menu:hover {
-    background-color: #ddd;
+    /* background-color: #ddd; */
+    color:#ffa500;
+
   }
   
   .menu.active {
-    background-color: #ccc;
-  }
+    background-color: #e4dadb;
+    border-radius: 5px;
+    color:#ffa500; 
+   }
   
   .submenu {
     padding-left: 20px;
@@ -40,6 +46,8 @@
     padding: 5px;
     border-bottom: 1px solid #ccc;
     list-style-type: none;
+    
+
   }
   li{
     border-bottom: 1px solid #ccc  ;
@@ -47,10 +55,11 @@
   
   .submenu a {
     text-decoration: none;
-    color: #000;
+    color:white;
   }
   
   .submenu a:hover {
     text-decoration: underline;
+    color:#ffa500; 
   }
   

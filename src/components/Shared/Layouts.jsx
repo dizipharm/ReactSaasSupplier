@@ -15,7 +15,7 @@ export default function Layouts() {
         <div style={{ width: '20%', height: '100vh', overflow: 'auto' }}>
           <Sidebar />
         </div>
-        <div style={{ flex: 1, overflow: 'auto', padding:"10px" }}>
+        <div style={{ flex: 1, overflow: 'auto', marginTop:"20px"}}>
           <Outlet />
         </div>
       </div>
