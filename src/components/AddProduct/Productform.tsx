@@ -129,7 +129,7 @@ const Productform: React.FC = () => {
       </Form.Group>
      
 
-      <Form.Group controlId="productDimensions" style={{display:"flex", gap:"10px"}}>
+      {/* <Form.Group controlId="productDimensions" style={{display:"flex", gap:"10px"}}>
         <Form.Label>Dimensions</Form.Label>
         <Form.Control
           type="text"
@@ -138,11 +138,11 @@ const Productform: React.FC = () => {
           onChange={(e) => setDimensions(e.target.value)}
            style={{width:"30%"}}
         />
-      </Form.Group>
+      </Form.Group> */}
 
      
 
-      <Form.Group controlId="productWeight" style={{display:"flex", gap:"10px"}}>
+      {/* <Form.Group controlId="productWeight" style={{display:"flex", gap:"10px"}}>
         <Form.Label>Weight</Form.Label>
         <Form.Control
           type="text"
@@ -152,11 +152,11 @@ const Productform: React.FC = () => {
            style={{width:"30%"}}
         />
       </Form.Group>
-    
+     */}
 
     
 
-      <Form.Group controlId="productGtin" style={{display:"flex", gap:"10px"}}>
+      {/* <Form.Group controlId="productGtin" style={{display:"flex", gap:"10px"}}>
         <Form.Label>SKU</Form.Label>
         <Form.Control
           type="text"
@@ -165,9 +165,9 @@ const Productform: React.FC = () => {
           onChange={(e) => setGtin(e.target.value)}
            style={{width:"30%"}}
         />
-      </Form.Group>
+      </Form.Group> */}
 
-      <Form.Group controlId="productGtin" style={{display:"flex", gap:"10px"}}>
+      {/* <Form.Group controlId="productGtin" style={{display:"flex", gap:"10px"}}>
         <Form.Label>Location</Form.Label>
         <Form.Control
           type="text"
@@ -176,7 +176,7 @@ const Productform: React.FC = () => {
           onChange={(e) => setGtin(e.target.value)}
            style={{width:"30%"}}
         />
-      </Form.Group>
+      </Form.Group> */}
       <Form.Group controlId="productGtin" style={{display:"flex", gap:"10px"}}>
         <Form.Label>Stock</Form.Label>
         <Form.Control
@@ -188,7 +188,7 @@ const Productform: React.FC = () => {
         />
       </Form.Group>
     
-      <Button variant="primary" type="submit" style={{width:"50%"}} >
+      <Button variant="primary" type="submit" style={{width:"15%"}} >
         Add Product
       </Button>
     </Form>
