@@ -15,7 +15,7 @@ const Upload = () => {
     <div >
 <h3>Upload Products</h3>
     <p>Download the file and complete it and upload</p>
-    <button className='btn w-fit ' onClick={handleClick}>Download</button>
+    <button className='btn w-fit ' onClick={handleClick}>Click here to download the file</button>
     <div style={{ display:"flex", flexFlow:"column", gap:"5px"}}>
         
 
