@@ -104,7 +104,29 @@ const Sidebar = () => {
           </button>
 		  </Link>
         </li>
-		<li>
+        <li>
+		<Link to="/dashboard/location">
+          <button
+            className={`menu ${activeMenu === 't&t' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('t&t')}
+          >
+			Smart Analytics
+            
+          </button>
+		  </Link>
+        </li>
+        <li>
+		<Link to="/dashboard/location">
+          <button
+            className={`menu ${activeMenu === 't&t' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('t&t')}
+          >
+			Product Enquiries
+            
+          </button>
+		  </Link>
+        </li>
+    		<li>
 		<Link to="/dashboard/admin">
           <button
             className={`menu ${activeMenu === 'admin' ? 'active' : ''}`}
