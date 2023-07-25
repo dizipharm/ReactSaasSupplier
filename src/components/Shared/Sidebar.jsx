@@ -39,7 +39,9 @@ const Sidebar = () => {
               <li>
                 <Link to={`/dashboard/addproduct`}>Add Product</Link>
               </li>
-            
+              <li>
+                <Link to={`/dashboard/upload`}>Upload </Link>
+              </li>
             </ul>
           )}
         </li>

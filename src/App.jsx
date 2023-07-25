@@ -9,6 +9,7 @@ import Myorder2 from "./components/OrderManagement/Myorder2";
 import Location from "./components/Locations/Location";
 import Product from "./components/Productscreen/Product";
 import Layouts from "./components/Shared/Layouts";
+import Upload from "./components/AddProduct/Upload";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Route index element={<Dashboard />} />
             <Route path="products" element={<Products />} />
             <Route path="addproduct" element={<Addproduct />} />
+            <Route path="upload" element={<Upload />} />
             <Route path="product/:id" element={<Product />} />
             <Route path="ordermanagement" element={<Myorder2 />} />
             <Route path="location" element={<Location />} />

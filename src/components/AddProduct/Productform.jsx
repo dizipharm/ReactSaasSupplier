@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getElementGroupList, getMaterialsList, getStructuralList } from '../Services/materialService';
 
-const Productform: React.FC = () => {
+const Productform = () => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productImage, setProductImage] = useState<File | null>(null);
@@ -19,7 +19,7 @@ const Productform: React.FC = () => {
   const navigate = useNavigate();
   const { adminId } = useParams();
 
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -61,7 +61,7 @@ const Productform: React.FC = () => {
     
   };
 
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e) => {
     const file = e.target.files?.[0];
     setProductImage(file || null);
   };
