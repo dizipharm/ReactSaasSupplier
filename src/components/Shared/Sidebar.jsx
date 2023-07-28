@@ -94,10 +94,10 @@ const Sidebar = () => {
 		  </Link>
         </li>
 		<li>
-		<Link to="/dashboard/location">
+		<Link to="/dashboard/trackandtrace">
           <button
-            className={`menu ${activeMenu === 't&t' ? 'active' : ''}`}
-            onClick={() => handleMenuClick('t&t')}
+            className={`menu ${activeMenu === 'trackandtrace' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('trackandtrace')}
           >
 			Track & Trace Shipment
             
@@ -105,21 +105,20 @@ const Sidebar = () => {
 		  </Link>
         </li>
         <li>
-		<Link to="/dashboard/location">
+		<Link to="/dashboard/smartanalytics">
           <button
-            className={`menu ${activeMenu === 't&t' ? 'active' : ''}`}
-            onClick={() => handleMenuClick('t&t')}
+            className={`menu ${activeMenu === 'smartanalytics' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('smartanalytics')}
           >
 			Smart Analytics
-            
           </button>
 		  </Link>
         </li>
         <li>
-		<Link to="/dashboard/location">
+		<Link to="/dashboard/productenquiries">
           <button
-            className={`menu ${activeMenu === 't&t' ? 'active' : ''}`}
-            onClick={() => handleMenuClick('t&t')}
+            className={`menu ${activeMenu === 'productenquiries' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('productenquiries')}
           >
 			Product Enquiries
             
