@@ -31,7 +31,7 @@ const Login = () => {
       setPassword('');
       if (response.status === 200) {
         // Redirect to the respective admin's dashboard
-        navigate(`/dashboard/${adminId}`);
+        navigate(`/dashboard`);
       } else {
         setErrorMessage('Invalid username or password. Please try again.');
       }
