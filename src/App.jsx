@@ -40,9 +40,11 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
-
-      {/* <h1>Hello {user.username}</h1>
-<button onClick={signOut}>signout</button> */}
+<div style={{display:"flex"}}>
+<h1>Hello {user.username}</h1>
+<button onClick={signOut}>signout</button>
+</div>
+    
       </main>
       )}
    
