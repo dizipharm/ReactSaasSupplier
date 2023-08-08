@@ -4,11 +4,12 @@ import Sidebar from './Sidebar';
 import Headernew from './Headernew';
 import './../CSS/layout.css';
 
-export default function Layouts() {
+const Layouts=({signOut,children}) =>{
   return (
     <>
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex:"9" }}>
-        <Headernew />
+        <Headernew signOut={signOut} />
+        {children}
       </div>
 
       <div style={{ display: 'flex', marginTop: '50px' }}>
@@ -22,3 +23,5 @@ export default function Layouts() {
     </>
   );
 }
+
+export default Layouts

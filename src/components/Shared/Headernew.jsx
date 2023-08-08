@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import Imagenew from './../../assets/Images/logo.png'
 
 
-const Headernew = () => {
+const Headernew = ({signOut}) => {
   const { adminId } = useParams();
   return (
     <Navbar  style={{background:"white", color:"#ffa500"}}>
@@ -29,6 +29,7 @@ const Headernew = () => {
             <LinkContainer to={`/dashboard/products`}>
             <Nav.Link><i className='fas fa-user'></i>Products</Nav.Link>
             </LinkContainer>
+            <button onClick={signOut}>Sign Out</button>
           </Nav>
         </Container>
       </Navbar>
