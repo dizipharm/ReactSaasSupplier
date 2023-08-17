@@ -57,7 +57,7 @@ const ProductList2 = () => {
              <Card.Body>
                <Card.Title as='div'>
 
-                <Link to={`/dashboard/product/${product.id}`}>
+                <Link to={`/product/${product.id}`}>
                <strong style={{ textTransform: "capitalize" }}>{product.name}</strong>
                </Link>
                </Card.Title>
