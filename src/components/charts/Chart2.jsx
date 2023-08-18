@@ -36,7 +36,7 @@ class Chart2 extends React.Component {
             }
           },
           title: {
-            text: 'Forecast',
+            text: 'Sales',
             align: 'left',
             style: {
               fontSize: "16px",

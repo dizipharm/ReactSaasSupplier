@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div>
       <div style={{display:'flex',gap:'1rem',height:'12rem'}}>
-      <Card style={{ width: '18rem',marginTop:'1rem',padding:'1rem',backgroundImage:'linear-gradient(to right, #f0ffff, #2a52be)' }}>
+      <Card style={{ width: '18rem',marginTop:'1rem',padding:'1rem',backgroundImage:'linear-gradient(to right, #f0ffff, #483d8b)' }}>
       <Card.Title>Products</Card.Title>
       <Card.Body >
         {/* <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle> */}
@@ -27,7 +27,7 @@ const Dashboard = () => {
 
       </Card.Body>
     </Card>
-    <Card style={{ width: '18rem',marginTop:'1rem',padding:'1rem' }}>
+    <Card style={{ width: '18rem',marginTop:'1rem',padding:'1rem', backgroundImage:'linear-gradient(to right, #f0ffff, #483d8b)'}}>
     <Card.Title>Order Management</Card.Title>
       <Card.Body >
         {/* <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle> */}
@@ -46,7 +46,7 @@ const Dashboard = () => {
 
       </Card.Body>
     </Card >
-    <Card style={{ width: '18rem',marginTop:'1rem',padding:'1rem' }}>
+    <Card style={{ width: '18rem',marginTop:'1rem',padding:'1rem' ,backgroundImage:'linear-gradient(to right, #f0ffff, #483d8b)'}}>
     <Card.Title>Location</Card.Title>
       <Card.Body >
         {/* <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle> */}
