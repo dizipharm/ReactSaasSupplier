@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { Card, Container, Row,Col, Button,Form, Carousel } from "react-bootstrap";
+import { Card, Container, Row,Col, Button,Form, Carousel, Table } from "react-bootstrap";
 import Imagenew from "./../assets/Images/938.jpg"
 
 
@@ -38,34 +38,51 @@ const ProductList2 = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           /> */}
-            <InputGroup className="mb-3" >
+            <InputGroup className="mb-3"  style={{width:"50%"}} >
           <InputGroup.Text style={{background:"#80ced6"}}>Search Products</InputGroup.Text>
           <Form.Control aria-label="Search..." 
            placeholder="Search..."
            value={searchQuery}
+          
            onChange={(e) => setSearchQuery(e.target.value)}/>
         </InputGroup>
         
         </div>
 
       <h1>Latest Products </h1>
-      <Row>
-        {products.filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) ).map((product) => (
-           <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
-           <Card className='my-3 p-5 rounded'>
-             <Card.Img src={Imagenew} />
-             <Card.Body>
-               <Card.Title as='div'>
-
-                <Link to={`/product/${product.id}`}>
-               <strong style={{ textTransform: "capitalize" }}>{product.name}</strong>
-               </Link>
-               </Card.Title>
-             </Card.Body>
-           </Card>
-         </Col>
+      <Table >
+      <thead>
+        <tr>
+          <th> Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      {products.filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) ).map((product) => (
+          <tr key={product.id}>
+            <td>
+              <img src={Imagenew} style={{ maxWidth: '100px' }} />
+            </td>
+            <td>{product.name}</td>
+            <td>{product.description}</td>
+            <td></td>
+            
+            <td >
+              <div style={{display:"flex", gap:"2px", maxWidth:"100px"}}>
+            <Link to={`/product/${product.id}`}>
+            <Button>View</Button>
+            </Link>
+            <Button variant='secondary'>Edit</Button>
+            <Button variant='danger'>Delete</Button>
+            </div>
+            </td>
+          </tr>
         ))}
-      </Row>
+      </tbody>
+    </Table>
     </div>
     </>
   );
