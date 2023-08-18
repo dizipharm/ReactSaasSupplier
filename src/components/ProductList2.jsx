@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { Card, Container, Row,Col, Button,Form, Carousel, Table } from "react-bootstrap";
+import { Card, Container, Row,Col, Button,Form, Carousel, Table,  FloatingLabel } from "react-bootstrap";
 import Imagenew from "./../assets/Images/938.jpg"
 
 
@@ -46,7 +46,22 @@ const ProductList2 = () => {
           
            onChange={(e) => setSearchQuery(e.target.value)}/>
         </InputGroup>
-        
+        <div style={{display:'flex', gap:'2px'}}>
+        <FloatingLabel controlId="floatingSelect" label="Sort by">
+      <Form.Select aria-label="Floating label select example">
+        <option>Price</option>
+        <option value="1">Low to High</option>
+        <option value="2">High to Low</option>
+        {/* <option value="3">Three</option> */}
+      </Form.Select>
+    </FloatingLabel>
+
+    <Button>
+    <Link to="/addproduct" style={{color:'white',textDecoration:'none'}}>Add new product
+    </Link>
+    </Button>
+   
+    </div>
         </div>
 
       <h1>Latest Products </h1>
