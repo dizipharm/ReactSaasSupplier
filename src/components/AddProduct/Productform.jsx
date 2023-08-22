@@ -10,7 +10,7 @@ const Productform = () => {
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
   const [sku, setSku] = useState("");
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
   // const [attachment, setAttachment] = useState(null);
 
   // const handleAttachmentChange = (event) => {
@@ -43,15 +43,15 @@ const Productform = () => {
     setStock(event.target.value);
   };
 
-  const handleMessageChange = (event) => {
-    setMessage(event.target.value);
-  };
+  // const handleMessageChange = (event) => {
+  //   setMessage(event.target.value);
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
    
       // Submit form data to backend API
-      const data = { name, units, stock, message,materialSpecification,price,description,sku };
+      const data = { name, units, stock,materialSpecification,price,description,sku };
       
      
       const response = await fetch(
@@ -73,7 +73,7 @@ const Productform = () => {
         setName("");
         setUnits("");
         setStock("");
-        setMessage("");
+        // setMessage("");
         setMaterialSpecification("");
         setPrice("");
         setDescription("");
