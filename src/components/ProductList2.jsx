@@ -1,32 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Card, Container, Row,Col, Button,Form, Carousel, Table,  FloatingLabel } from "react-bootstrap";
 import Imagenew from "./../assets/Images/938.jpg"
-
-
+ 
 
 const ProductList2 = () => {
-  const [products, setProducts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
 
-  const { adminId } = useParams();
+  const [data, setData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+ 
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get(("https://1dd91932-6f58-48e7-83be-bb5085b0f9a3.mock.pstmn.io/products"));
-        setProducts(response.data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
 
-    fetchProducts();
+    async function fetchData() {
+
+      try {
+
+        const response = await axios.get('https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product');
+
+        //setData(response.data);
+
+        console.log(response.data.body);
+
+        setData(response.data.body);
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
+
+    }
+
+ 
+
+    fetchData();
+
   }, []);
 
+ 
+
   return (
+
     <>
     <div style={{ padding:"12px"}}>
 
@@ -76,7 +94,7 @@ const ProductList2 = () => {
         </tr>
       </thead>
       <tbody>
-      {products.filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) ).map((product) => (
+      {data.filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) ).map((product) => (
           <tr key={product.id}>
             <td>
               <img src={Imagenew} style={{ maxWidth: '100px' }} />
@@ -100,7 +118,11 @@ const ProductList2 = () => {
     </Table>
     </div>
     </>
+
   );
+
 };
+
+ 
 
 export default ProductList2;
