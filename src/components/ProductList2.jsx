@@ -101,7 +101,7 @@ const ProductList2 = () => {
             </td>
             <td>{product.name}</td>
             <td>{product.description}</td>
-            <td></td>
+            <td>{product.price}£</td>
             
             <td >
               <div style={{display:"flex", gap:"2px", maxWidth:"100px"}}>
