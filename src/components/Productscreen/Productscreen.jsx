@@ -8,13 +8,12 @@ import Imagenew from "../../assets/Images/938.jpg"
 const Productscreen = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
-  const {adminId} = useParams();
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://1dd91932-6f58-48e7-83be-bb5085b0f9a3.mock.pstmn.io/products/${id}`);
-        setProduct(response.data);
+        const response = await axios.get(`https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+        setProduct(response.data.body)
       } catch (error) {
         console.error('Error fetching product:', error);
       }

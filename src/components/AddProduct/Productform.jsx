@@ -55,7 +55,7 @@ const Productform = () => {
       
      
       const response = await fetch(
-        "https://9le3c3xur7.execute-api.eu-west-2.amazonaws.com/prod/product",
+        "https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product",
         {
           method: "POST",
           mode: "no-cors",

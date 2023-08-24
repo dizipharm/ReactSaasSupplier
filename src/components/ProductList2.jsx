@@ -23,7 +23,7 @@ const ProductList2 = () => {
 
         //setData(response.data);
 
-        console.log(response.data.body);
+        // console.log(response.data.body);
 
         setData(response.data.body);
 
