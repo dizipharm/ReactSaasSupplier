@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Card, Container, Row,Col, Button,Form, Carousel, Table,  FloatingLabel } from "react-bootstrap";
 import Imagenew from "./../assets/Images/938.jpg"
@@ -11,7 +11,7 @@ const ProductList2 = () => {
 
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
- 
+  const navigate = useNavigate()
 
   useEffect(() => {
 
@@ -41,7 +41,14 @@ const ProductList2 = () => {
 
   }, []);
 
- 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+      window.location.reload(); // Redirect to product list after deletion
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
 
   return (
 
@@ -109,7 +116,7 @@ const ProductList2 = () => {
             <Button>View</Button>
             </Link>
             <Button variant='secondary'>Edit</Button>
-            <Button variant='danger'>Delete</Button>
+            <Button variant='danger' onClick={() => handleDelete(product.id)}>Delete</Button>
             </div>
             </td>
           </tr>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button, Container } from 'react-bootstrap'
 import Imagenew from "../../assets/Images/938.jpg"
 
@@ -8,6 +8,7 @@ import Imagenew from "../../assets/Images/938.jpg"
 const Productscreen = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -21,6 +22,15 @@ const Productscreen = () => {
 
     fetchProduct();
   }, [id]);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+      navigate("/products"); // Redirect to product list after deletion
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
 
   if (!product) {
     return <div>Loading...</div>;
@@ -76,7 +86,7 @@ const Productscreen = () => {
                             <Button  type='button' >
                                 Edit
                             </Button>
-                            <Button variant="danger" type='button' >
+                            <Button variant="danger" type='button' onClick={handleDelete} >
                                 Delete
                             </Button>
                         </ListGroup.Item>
