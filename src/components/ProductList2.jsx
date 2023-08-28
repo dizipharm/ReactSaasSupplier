@@ -11,6 +11,8 @@ const ProductList2 = () => {
 
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState('asc'); 
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -41,6 +43,18 @@ const ProductList2 = () => {
 
   }, []);
 
+  useEffect(() => {
+    const sortedData = [...data].sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+
+    setData(sortedData);
+  }, [sortOrder]);
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
@@ -50,15 +64,7 @@ const ProductList2 = () => {
     }
   };
 
-  const sortItemsByPriceLowToHigh = () => {
-    const sortedItems = [...data].sort((a, b) => a.price - b.price);
-    setData(sortedItems);
-  };
 
-  const sortItemsByPriceHighToLow = () => {
-    const sortedItems = [...data].sort((a, b) => b.price - a.price);
-    setData(sortedItems);
-  };
 
   return (
 
@@ -73,7 +79,7 @@ const ProductList2 = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           /> */}
-            <InputGroup className="mb-3"  style={{width:"50%"}} >
+            <InputGroup className="mb-3"  style={{width:"40%"}} >
           <InputGroup.Text style={{background:"#80ced6"}}>Search Products</InputGroup.Text>
           <Form.Control aria-label="Search..." 
            placeholder="Search..."
@@ -81,17 +87,32 @@ const ProductList2 = () => {
           
            onChange={(e) => setSearchQuery(e.target.value)}/>
         </InputGroup>
-        <div style={{display:'flex', gap:'2px'}}>
-        <FloatingLabel controlId="floatingSelect" label="Sort by">
-      <Form.Select aria-label="Floating label select example">
-        <option>Price</option>
-        <button onClick={sortItemsByPriceLowToHigh}> (Low to High)</button>
-        <button onClick={sortItemsByPriceHighToLow}>(High to Low)</button>
-     
-        {/* <option value="3">Three</option> */}
-      </Form.Select>
-    </FloatingLabel>
-
+        <div style={{display:'flex', gap:'3px'}}>
+        <Button>
+    <Link  style={{color:'white',textDecoration:'none'}}>LM-PM
+    </Link>
+    </Button>
+    <Button>
+    <Link  style={{color:'white',textDecoration:'none'}}>CO2
+    </Link>
+    </Button>
+   
+   
+        <Button>
+    <Link  style={{color:'white',textDecoration:'none'}}>Promotions
+    </Link>
+    </Button>
+   
+        <FloatingLabel controlId="floatingSelect" label="Sort by price">
+        <Form.Select
+          aria-label="Floating label select example"
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+        >
+          <option value="asc">Low to High</option>
+          <option value="desc">High to Low</option>
+        </Form.Select>
+      </FloatingLabel>
     <Button>
     <Link to="/addproduct" style={{color:'white',textDecoration:'none'}}>Add new product
     </Link>
@@ -101,6 +122,7 @@ const ProductList2 = () => {
         </div>
 
       <h1>Latest Products </h1>
+      <div style={{width:"1050px"}}>
       <Table >
       <thead>
         <tr>
@@ -136,6 +158,7 @@ const ProductList2 = () => {
         ))}
       </tbody>
     </Table>
+    </div>
     </div>
     </>
 
