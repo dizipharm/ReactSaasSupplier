@@ -3,10 +3,11 @@ import {LinkContainer} from 'react-router-bootstrap'
 import{ Navbar, Container, Nav} from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom';
 import Imagenew from './../../assets/Images/logo.png'
-
+import './Headernew.css'
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Headernew = ({signOut}) => {
-  const { adminId } = useParams();
+  // const { adminId } = useParams();
   return (
     <Navbar  style={{background:"white", color:"#ffa500"}}>
         <Container>
@@ -22,16 +23,43 @@ const Headernew = ({signOut}) => {
             />
           </Navbar.Brand>
           </LinkContainer>
-          <Nav className="ml-auto">
-          {/* <LinkContainer to='/cart'>
-            <Nav.Link ><i className='fas fa-shopping-cart'></i>Cart</Nav.Link>
-            </LinkContainer> */}
-            <LinkContainer to={`/dashboard/products`}>
-            <Nav.Link><i className='fas fa-user'></i>Products</Nav.Link>
+          <Nav className="ml-auto ">
+            <div className='header'>
+          <LinkContainer to='/alert&notifications'>
+            <Nav.Link ><i className='fas fa-shopping-cart'></i>Alert & Notifications</Nav.Link>
             </LinkContainer>
-            <button onClick={signOut}>Sign Out</button>
+            <LinkContainer to='/smartanalytics'>
+            <Nav.Link ><i className='fas fa-shopping-cart'></i>Smart Analytics</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/ratings'>
+            <Nav.Link ><i className='fas fa-shopping-cart'></i>Ratings</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/settings'>
+            <Nav.Link ><i className='fas fa-shopping-cart'></i>Settings</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/supportcare'>
+            <Nav.Link ><i className='fas fa-shopping-cart'></i>Support Care</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/t&t'>
+            <Nav.Link><i className='fas fa-user'></i>Track & Trace</Nav.Link>
+            </LinkContainer>
+            </div>
+            
           </Nav>
+         
+          <Dropdown >
+      <Dropdown.Toggle  id="dropdown-basic" >
+       Profile
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu  >
+        <Dropdown.Item href="#/action-1" >User</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Settings</Dropdown.Item>
+        {/* <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+      </Dropdown.Menu>
+    </Dropdown>
         </Container>
+       
       </Navbar>
   )
 }
