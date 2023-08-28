@@ -138,10 +138,10 @@ const Sidebar = () => {
           {activeMenu === 'prdmgt' && (
             <ul className="submenu">
               <li>
-                <Link to={`/singleitems`} >Single Items</Link>
+                <Link to={`/addproduct`} >Single Items</Link>
               </li>
               <li>
-                <Link to={`/bulkupload`}>Bulk Upload</Link>
+                <Link to={`/upload`}>Bulk Upload</Link>
               </li>
               <li>
                 <Link to={`/updateepd`}>Update EPD </Link>

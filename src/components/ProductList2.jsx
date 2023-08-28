@@ -50,6 +50,16 @@ const ProductList2 = () => {
     }
   };
 
+  const sortItemsByPriceLowToHigh = () => {
+    const sortedItems = [...data].sort((a, b) => a.price - b.price);
+    setData(sortedItems);
+  };
+
+  const sortItemsByPriceHighToLow = () => {
+    const sortedItems = [...data].sort((a, b) => b.price - a.price);
+    setData(sortedItems);
+  };
+
   return (
 
     <>
@@ -75,8 +85,9 @@ const ProductList2 = () => {
         <FloatingLabel controlId="floatingSelect" label="Sort by">
       <Form.Select aria-label="Floating label select example">
         <option>Price</option>
-        <option value="1">Low to High</option>
-        <option value="2">High to Low</option>
+        <button onClick={sortItemsByPriceLowToHigh}> (Low to High)</button>
+        <button onClick={sortItemsByPriceHighToLow}>(High to Low)</button>
+     
         {/* <option value="3">Three</option> */}
       </Form.Select>
     </FloatingLabel>
@@ -117,6 +128,8 @@ const ProductList2 = () => {
             </Link>
             <Button variant='secondary'>Edit</Button>
             <Button variant='danger' onClick={() => handleDelete(product.id)}>Delete</Button>
+            <Button variant='primary' >Publish</Button>
+
             </div>
             </td>
           </tr>
