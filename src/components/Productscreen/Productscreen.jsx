@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button, Container } from 'react-bootstrap'
 import Imagenew from "../../assets/Images/938.jpg"
 
@@ -13,7 +13,7 @@ const Productscreen = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+        const response = await axios.get(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
         setProduct(response.data.body)
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -25,7 +25,7 @@ const Productscreen = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+      await axios.delete(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
       navigate("/products"); // Redirect to product list after deletion
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -83,9 +83,10 @@ const Productscreen = () => {
                         </ListGroup.Item>
                         <ListGroup.Item style={{ display:"flex", flexFlow:"column", gap:"5px"}}>
                           
-                            <Button  type='button' >
+                          <Link  to={`/editproduct/${product.id}`}>  <Button  type='button' >
                                 Edit
                             </Button>
+                            </Link>
                             <Button variant="danger" type='button' onClick={handleDelete} >
                                 Delete
                             </Button>

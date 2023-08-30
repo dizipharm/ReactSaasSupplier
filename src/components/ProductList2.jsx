@@ -21,7 +21,7 @@ const ProductList2 = () => {
 
       try {
 
-        const response = await axios.get('https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product');
+        const response = await axios.get('https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product');
 
         //setData(response.data);
 
@@ -57,7 +57,7 @@ const ProductList2 = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://namgyojvog.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+      await axios.delete(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
       window.location.reload(); // Redirect to product list after deletion
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -134,7 +134,9 @@ const ProductList2 = () => {
         </tr>
       </thead>
       <tbody>
-      {data.filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) ).map((product) => (
+      {data
+      // .filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) )
+      .map((product) => (
           <tr key={product.id}>
             <td>
               <img src={Imagenew} style={{ maxWidth: '100px' }} />
@@ -148,7 +150,9 @@ const ProductList2 = () => {
             <Link to={`/product/${product.id}`}>
             <Button>View</Button>
             </Link>
+            <Link to={`/editproduct/${product.id}`}>
             <Button variant='secondary'>Edit</Button>
+            </Link>
             <Button variant='danger' onClick={() => handleDelete(product.id)}>Delete</Button>
             <Button variant='primary' >Publish</Button>
 

@@ -52,7 +52,7 @@ const Headernew = ({signOut}) => {
        Profile
       </Dropdown.Toggle>
 
-      <Dropdown.Menu  >
+      <Dropdown.Menu style={{ width:"10%"}} >
         <Dropdown.Item href="#/action-1" >User</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Settings</Dropdown.Item>
         {/* <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}

@@ -12,6 +12,7 @@ import Upload from "./components/AddProduct/Upload";
 import {Amplify,Auth} from "aws-amplify"
 import awsconfig from "./aws-exports";
 import {Authenticator, withAuthenticator} from "@aws-amplify/ui-react"
+import Editproduct from "./components/Productscreen/Editproduct";
 
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="addproduct" element={<Addproduct />} />
             <Route path="upload" element={<Upload />} />
             <Route path="product/:id" element={<Product />} />
+            <Route path="editproduct/:id" element={<Editproduct />} />
             <Route path="ordermanagement" element={<Myorder2 />} />
             <Route path="location" element={<Location />} />
           </Route>
