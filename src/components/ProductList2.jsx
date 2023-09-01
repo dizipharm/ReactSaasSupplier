@@ -56,6 +56,7 @@ const ProductList2 = () => {
   }, [sortOrder]);
 
   const handleDelete = async (id) => {
+    //https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/{id}
     try {
       await axios.delete(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
       window.location.reload(); // Redirect to product list after deletion

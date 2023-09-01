@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
-
 const Productform = () => {
   const [name, setName] = useState("");
   const [materialSpecification, setMaterialSpecification] = useState("");
