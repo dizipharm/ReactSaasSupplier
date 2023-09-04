@@ -27,24 +27,24 @@ useEffect(()=> {
   }
    )
   .catch(err => console.log(err))
-})
+},[id])
 
 const navigate = useNavigate()
 
-const handleSubmit =(e) => {
+const handleSubmit = (e) => {
   e.preventDefault();
-  fetch(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`,values, {
-    method:'PUT',
-    mode: "no-cors",
-    headers:{
-      'Content-Type': 'application/json',
-    }
-  })
-  .then(res => {
-    navigate('/products')
-  })
-  .catch(err => console.log(err))
-}
+  axios
+    .put(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`, values, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((res) => {
+      navigate('/products');
+    })
+    .catch((err) => console.log(err));
+};
+
 
   return (
     <div style={{ width:'50%', height:"screen"}}>
@@ -60,16 +60,16 @@ const handleSubmit =(e) => {
           >
             <div className="form-group flex flex-col font-sans gap-4">
               <div className=" form-group flex flex-col gap-4">
-                <label className=" text-xl  "> Product Name</label>
+                <label className=" text-xl   " id="productname"> Product Name</label>
                 <input
                   type="text"
                   className="form-control w-2/3"
-                 
+                  id="productname"
                    value={values.name}
                    onChange={(e) => 
-                    {
-                      console.log('Name field changed:', e.target.value);
-                      setValues({...values, name:e.target.value})}}
+                    
+                    
+                      setValues({...values, name:e.target.value})}
                    
                 />
               </div>

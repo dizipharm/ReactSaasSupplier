@@ -5,7 +5,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Card, Container, Row,Col, Button,Form, Carousel, Table,  FloatingLabel } from "react-bootstrap";
 import Imagenew from "./../assets/Images/938.jpg"
- 
+import './CSS/product.css' 
 
 const ProductList2 = () => {
 
@@ -63,6 +63,34 @@ const ProductList2 = () => {
     } catch (error) {
       console.error("Error deleting product:", error);
     }
+  };
+
+  const handlePublishToggle = (productId) => {
+    // Find the product by ID in the products state
+    const productToUpdate = data.find((product) => product.id === productId);
+
+    // Toggle the publish status
+    const updatedProduct = { ...productToUpdate, publish: !productToUpdate.publish };
+
+    // Send a PUT request to the second API (https://product2/prod) to update the publish status
+    fetch(`https://hf06lm5qnk.execute-api.eu-west-2.amazonaws.com/prod/market/`, {
+      method: 'POST',
+      mode:'no-cors',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedProduct),
+    })
+      .then((response) => response.json())
+      .then((updatedData) => {
+        // Update the product list with the updated data
+        const updatedProducts = data.map((product) =>
+          product.id === productId ? updatedData : product
+        );
+        setData(updatedProducts);
+      })
+      .catch((error) => console.error('Error updating data:', error));
   };
 
 
@@ -131,6 +159,7 @@ const ProductList2 = () => {
           <th>Name</th>
           <th>Description</th>
           <th>Price</th>
+          <th>Publish</th>
           <th></th>
         </tr>
       </thead>
@@ -145,7 +174,9 @@ const ProductList2 = () => {
             <td>{product.name}</td>
             <td>{product.description}</td>
             <td>{product.price}£</td>
-            
+            <td className={product.publish === 'No' ? 'red-text' : 'green-text'}>
+                {product.publish ? 'Yes' : 'No'}
+              </td>
             <td >
               <div style={{display:"flex", gap:"2px", maxWidth:"100px"}}>
             <Link to={`/product/${product.id}`}>
@@ -155,7 +186,11 @@ const ProductList2 = () => {
             <Button variant='secondary'>Edit</Button>
             </Link>
             <Button variant='danger' onClick={() => handleDelete(product.id)}>Delete</Button>
-            <Button variant='primary' >Publish</Button>
+            <Button
+                onClick={() => handlePublishToggle(product.id)}
+              >
+                {product.publish ? 'Unpublish' : 'Publish'}
+              </Button>
 
             </div>
             </td>
