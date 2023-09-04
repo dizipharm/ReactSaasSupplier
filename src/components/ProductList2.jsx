@@ -83,29 +83,29 @@ const ProductList2 = () => {
       body: JSON.stringify(updatedProduct),
     
     })
-    window.location.reload();
+ 
     
    
       // .then((response) => response.json())
-      // .then((data) => {
-      //   console.log('Data updated successfully:', data);
-      //   // Reload the page after the data is updated
-      //   window.location.reload();
-      // })
+      .then((data) => {
+        console.log('Data updated successfully:', data);
+        // Reload the page after the data is updated
+        window.location.reload();
+      })
      
-      //       .then((updatedData) => {
-      //   // Update the product list with the updated data
+            .then((updatedData) => {
+        // Update the product list with the updated data
         
-      //   const updatedProducts = data.map((product) =>
-      //     product.id === productId ? updatedData : product
-      //   );
+        const updatedProducts = data.map((product) =>
+          product.id === productId ? updatedData : product
+        );
       
-      //   setData(updatedProducts);
+        setData(updatedProducts);
       
       
-      // })
+      })
     
-      // .catch((error) => console.error('Error updating data:', error));
+      .catch((error) => console.error('Error updating data:', error));
      
    
   };
