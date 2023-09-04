@@ -31,13 +31,15 @@ useEffect(()=> {
 
 const navigate = useNavigate()
 
-const handleSubmit = (e) => {
+const handleSubmit = async(e) => {
   e.preventDefault();
-  axios
-    .put(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`, values, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+  const response = await fetch(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`, values, {
+  method:"PUT",
+  mode:"no-cors",    
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
     })
     .then((res) => {
       navigate('/products');

@@ -183,7 +183,7 @@ const ProductList2 = () => {
       </thead>
       <tbody>
       {data
-      // .filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) )
+      .filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) )
       .map((product) => (
           <tr key={product.id}>
             <td>
@@ -192,8 +192,8 @@ const ProductList2 = () => {
             <td>{product.name}</td>
             <td>{product.description}</td>
             <td>{product.price}£</td>
-            <td className={product.publish === 'No' ? 'red-text' : 'green-text'}>
-                {product.publish ? 'Yes' : 'No'}
+            <td className={product.publish === 'False' ? 'red-text' : 'green-text'}>
+                {product.publish ? 'True' : 'False'}
               </td>
             <td >
               <div style={{display:"flex", gap:"2px", maxWidth:"100px"}}>
