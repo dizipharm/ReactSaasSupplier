@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-
+import {
+  getElementGroupList,
+  getMaterialsList,
+  getStructuralList,
+} from "../Services/materialService";
 
 const Productform = () => {
   const [name, setName] = useState("");
@@ -10,6 +14,8 @@ const Productform = () => {
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
   const [sku, setSku] = useState("");
+  const [image, setImage] = useState("");
+  const [materialSpecList, setMaterialSpecList] = useState([]);
   // const [message, setMessage] = useState("");
   // const [attachment, setAttachment] = useState(null);
 
@@ -18,11 +24,29 @@ const Productform = () => {
   //   setAttachment(file);
   // };
 
+  useEffect(() => {
+    getMaterialsList()
+      .then((res) => {
+        setMaterialSpecList(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []); // Empty dependency array
+  
+
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
-  const handlematerialSpecificationChange = (event) => {
+  const handleMaterialSpecificationChange = (event) => {
     setMaterialSpecification(event.target.value);
+  };
+  
+  const handleImageChange = (event) => {
+    // Handle the image change separately
+    const file = event.target.files[0];
+    // You can do something with the selected file if needed
+    setImage(file);
   };
   const handledescriptionChange = (event) => {
     setDescription(event.target.value);
@@ -45,7 +69,6 @@ const Productform = () => {
   // const handleMessageChange = (event) => {
   //   setMessage(event.target.value);
   // };
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -91,115 +114,130 @@ const Productform = () => {
     }
   };
 
-  useEffect(() => {}, []);
+
 
   return (
-    <div style={{ width: "50%", height: "screen" }}>
-      <div className=" flex flex-col md:flex-row  md:pl-12 gap-4">
-        <div className=" md:w-1/2 pl-20  bg-gray-100 rounded-sm">
-          <div>
-            <form onSubmit={handleSubmit} className=" ">
-              <div className="form-group flex flex-col font-sans gap-4">
-                <div className=" form-group flex flex-col gap-4">
-                  <label className=" text-xl  ">Product Name</label>
-                  <input
-                    type="text"
-                    className="form-control w-2/3"
-                    value={name}
-                    onChange={handleNameChange}
-                  />
-                </div>
-                <div className="form-group  flex flex-col gap-4">
-                  <label>Material specifications</label>
-
-                  <input
-                    type="text"
-                    className="form-control w-2/3"
-                    value={materialSpecification}
-                    onChange={handlematerialSpecificationChange}
-                  />
-                </div>
-
-                <div className="form-group  flex flex-col gap-4">
-                  <label>Add Image</label>
-                  <input
-                    type="File"
-                    className="form-control w-2/3"
-                    value={materialSpecification}
-                    onChange={handlematerialSpecificationChange}
-                  />
-                </div>
-
-                <div className="form-group flex flex-col gap-4">
-                  <label>units</label>
-                  <input
-                    type="units"
-                    className="form-control w-2/3"
-                    value={units}
-                    onChange={handleunitsChange}
-                  />
-                </div>
-                <div className="form-group flex flex-col gap-4">
-                  <label>Description</label>
-                  <input
-                    type="text"
-                    className="form-control w-2/3"
-                    value={description}
-                    onChange={handledescriptionChange}
-                  />
-                </div>
-                <div className="form-group flex flex-col gap-4">
-                  <label>price</label>
-                  <input
-                    type="text"
-                    className="form-control w-2/3"
-                    value={price}
-                    onChange={handlepriceChange}
-                  />
-                </div>
-                <div className="form-group flex flex-col gap-4">
-                  <label>Stock</label>
-                  <input
-                    type="text"
-                    className="form-control w-2/3"
-                    value={stock}
-                    onChange={handlestockNumberChange}
-                  />
-                </div>
-                <div className="form-group flex flex-col gap-4">
-                  <label>sku</label>
-                  <input
-                    type="text"
-                    className="form-control w-2/3"
-                    value={sku}
-                    onChange={handleskuChange}
-                  />
-                </div>
-                {/* <div className="form-group flex flex-col gap-4">
-                  <label>Description</label>
-                  <textarea
-                    className="form-control w-2/3"
-                  
-                    value={message}
-                    onChange={handleMessageChange}
-                     
-                    
-                  />
-                </div> */}
-
-                <Button
-                  type="submit"
-                  className=" "
-                  style={{ marginTop: "10px" }}
-                >
-                  Save
-                </Button>
+    <div style={{ width: "50%", height: "100vh" }}>
+    <div className="flex flex-col md:flex-row md:pl-12 gap-4">
+      <div className="md:w-1/2 pl-20 bg-gray-100 rounded-sm">
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group flex flex-col gap-4">
+              <div className="form-group flex flex-col gap-4">
+                <label className="text-xl">Product Name</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={name}
+                  onChange={handleNameChange}
+                />
               </div>
-            </form>
-          </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Material specifications</label>
+                <select
+                  onChange={handleMaterialSpecificationChange}
+                  value={materialSpecification}
+                  style={{
+                    width: "100%",
+                    height: "40px",
+                    padding: "8px", // Add padding to make the select field consistent
+                    border: "1px solid #ccc", // Add border for consistency
+                    borderRadius: "4px", // Add border radius
+                  }}
+                >
+                  <option>Select the Material</option>
+                  {materialSpecList.map((material, index) => (
+                    <option
+                      key={index + 1}
+                      value={material["material_specification"]}
+                    >
+                      {material["material_specification"]}
+                    </option>
+                  ))}
+                </select>
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Add Image</label>
+                <input
+                  type="file"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  onChange={handleImageChange}
+                />
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Units</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={units}
+                  onChange={handleunitsChange}
+                />
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Description</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={description}
+                  onChange={handledescriptionChange}
+                />
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Price</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={price}
+                  onChange={handlepriceChange}
+                />
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Stock</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={stock}
+                  onChange={handlestockNumberChange}
+                />
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>SKU</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={sku}
+                  onChange={handleskuChange}
+                />
+              </div>
+  
+              <button
+                type="submit"
+                className=" "
+                style={{ width: "100%", marginTop: "10px", height: "40px" }}
+              >
+                Save
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  </div>
+  
   );
 };
 
