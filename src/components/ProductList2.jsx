@@ -66,13 +66,13 @@ const ProductList2 = () => {
   };
 
   const handlePublishToggle = (productId) => {
-    // Find the product by ID in the products state
+    // Find the product by ID in the data state
     const productToUpdate = data.find((product) => product.id === productId);
 
     // Toggle the publish status
     const updatedProduct = { ...productToUpdate, publish: !productToUpdate.publish };
 
-    // Send a PUT request to the second API (https://product2/prod) to update the publish status
+    // Send a POST request to the second API (https://product2/prod) to update the publish status
     fetch(`https://hf06lm5qnk.execute-api.eu-west-2.amazonaws.com/prod/market/`, {
       method: 'POST',
       mode:'no-cors',
@@ -81,18 +81,30 @@ const ProductList2 = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedProduct),
+    
     })
+   
       .then((response) => response.json())
-      .then((updatedData) => {
-        // Update the product list with the updated data
-        const updatedProducts = data.map((product) =>
-          product.id === productId ? updatedData : product
-        );
-        setData(updatedProducts);
-      })
+      window.location.reload()
+     
+      //       .then((updatedData) => {
+      //   // Update the product list with the updated data
+        
+      //   const updatedProducts = data.map((product) =>
+      //     product.id === productId ? updatedData : product
+      //   );
+      
+      //   setData(updatedProducts);
+      
+      
+      // })
+    
       .catch((error) => console.error('Error updating data:', error));
+     
+   
   };
 
+ 
 
 
   return (
