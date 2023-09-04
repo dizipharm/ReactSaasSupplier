@@ -150,14 +150,18 @@ const ProductList2 = () => {
     </Link>
     </Button>
    
-        <FloatingLabel controlId="floatingSelect" label="Sort by price">
+        <FloatingLabel controlId="floatingSelect" label="Sort">
         <Form.Select
           aria-label="Floating label select example"
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
         >
-          <option value="asc">Low to High</option>
-          <option value="desc">High to Low</option>
+          <option value="asc">Low to High Price</option>
+          <option value="desc">High to Low Price</option>
+          <option value="asc">Low to High EPD</option>
+          <option value="desc">High to Low EPD</option>
+          <option value="asc">Low to High Promotion</option>
+          <option value="desc">High to Low Promotion</option>
         </Form.Select>
       </FloatingLabel>
     <Button>
@@ -175,7 +179,8 @@ const ProductList2 = () => {
         <tr>
           <th> Image</th>
           <th>Name</th>
-          <th>Description</th>
+          <th>Product Info</th>
+          <th>EPD</th>
           <th>Price</th>
           <th>Publish</th>
           <th></th>
@@ -190,8 +195,15 @@ const ProductList2 = () => {
               <img src={Imagenew} style={{ maxWidth: '100px' }} />
             </td>
             <td>{product.name}</td>
-            <td>{product.description}</td>
-            <td>{product.price}£</td>
+            <td><span style={{color:'#4682b4',fontWeight:'bold'}}>Description</span>:{product.description}
+            <br></br>
+            <span style={{color:'#006a4e',fontWeight:'bold'}}>Units</span>:{product.units}
+            <br>
+            </br>
+            <span style={{color:'#c80815',fontWeight:'bold'}}>SKU</span>:{product.sku}
+            </td>
+            <td>Co2</td>
+            <td>£{product.price}</td>
             <td className={product.publish === 'False' ? 'red-text' : 'green-text'}>
                 {product.publish ? 'True' : 'False'}
               </td>
