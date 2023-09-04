@@ -150,14 +150,18 @@ const ProductList2 = () => {
     </Link>
     </Button>
    
-        <FloatingLabel controlId="floatingSelect" label="Sort by price">
+        <FloatingLabel controlId="floatingSelect" label="Sort">
         <Form.Select
           aria-label="Floating label select example"
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
         >
-          <option value="asc">Low to High</option>
-          <option value="desc">High to Low</option>
+          <option value="asc">Low to High Price</option>
+          <option value="desc">High to Low Price</option>
+          <option value="asc">Low to High EPD</option>
+          <option value="desc">High to Low EPD</option>
+          <option value="asc">Low to High Promotions</option>
+          <option value="desc">High to Low Promotions</option>
         </Form.Select>
       </FloatingLabel>
     <Button>
@@ -177,13 +181,17 @@ const ProductList2 = () => {
           <th>Name</th>
           <th>Description</th>
           <th>Price</th>
+          <th>Stock</th>
+          <th>SKU</th>
+          <th>EPD(Co2)</th>
           <th>Publish</th>
+
           <th></th>
         </tr>
       </thead>
       <tbody>
       {data
-      // .filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) )
+      .filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()) )
       .map((product) => (
           <tr key={product.id}>
             <td>
@@ -191,7 +199,10 @@ const ProductList2 = () => {
             </td>
             <td>{product.name}</td>
             <td>{product.description}</td>
-            <td>{product.price}£</td>
+            <td>£{product.price}</td>
+            <td>{product.stock}</td>
+            <td>{product.sku}</td>
+            <td>Co2</td>
             <td className={product.publish === 'No' ? 'red-text' : 'green-text'}>
                 {product.publish ? 'Yes' : 'No'}
               </td>
@@ -212,6 +223,9 @@ const ProductList2 = () => {
 
             </div>
             </td>
+
+
+
           </tr>
         ))}
       </tbody>

@@ -52,10 +52,23 @@ const Productscreen = () => {
                     <Rating value={product.rating} 
                     text={`${product.numReviews} reviews`} />
                 </ListGroup.Item> */}
+                                <ListGroup.Item>
+                   MaterialSpecifications: {product.materialSpecification}
+                </ListGroup.Item>
                 <ListGroup.Item>
                    Description: {product.description}
                 </ListGroup.Item>
+                <ListGroup.Item>
+                   Sku: {product.sku}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                   Units: {product.units}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                Publish: {product.publish ? 'Published' : 'Unpublished'}
+                </ListGroup.Item>
             </ListGroup>
+            
              </Col>
              <Col md={2}>
                 <Card>
@@ -66,7 +79,7 @@ const Productscreen = () => {
                                 Price:
                                  </Col>
                                 <Col>
-                                <strong>Rs.{product.price}</strong>
+                                <strong>£{product.price}</strong>
                                 </Col>
                             </Row>
                         </ListGroup.Item>
@@ -77,7 +90,7 @@ const Productscreen = () => {
                                  </Col>
                                 <Col>
                                {/* {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'} */}
-                               In Stock
+                              {product.stock}
                                 </Col>
                             </Row>
                         </ListGroup.Item>
