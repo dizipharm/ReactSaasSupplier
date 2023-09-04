@@ -83,9 +83,15 @@ const ProductList2 = () => {
       body: JSON.stringify(updatedProduct),
     
     })
+    window.location.reload();
+    
    
-      .then((response) => response.json())
-      window.location.reload()
+      // .then((response) => response.json())
+      // .then((data) => {
+      //   console.log('Data updated successfully:', data);
+      //   // Reload the page after the data is updated
+      //   window.location.reload();
+      // })
      
       //       .then((updatedData) => {
       //   // Update the product list with the updated data
@@ -99,7 +105,7 @@ const ProductList2 = () => {
       
       // })
     
-      .catch((error) => console.error('Error updating data:', error));
+      // .catch((error) => console.error('Error updating data:', error));
      
    
   };
