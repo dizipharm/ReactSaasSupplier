@@ -14,7 +14,7 @@ const Productform = () => {
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
   const [sku, setSku] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [materialSpecList, setMaterialSpecList] = useState([]);
   // const [message, setMessage] = useState("");
   // const [attachment, setAttachment] = useState(null);
@@ -43,9 +43,7 @@ const Productform = () => {
   };
   
   const handleImageChange = (event) => {
-    // Handle the image change separately
     const file = event.target.files[0];
-    // You can do something with the selected file if needed
     setImage(file);
   };
   const handledescriptionChange = (event) => {
@@ -82,10 +80,11 @@ const Productform = () => {
       price,
       description,
       sku,
+      image,
     };
 
     const response = await fetch(
-      "https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product",
+      "https://ce7ilz7f17.execute-api.eu-west-2.amazonaws.com/prod/product",
       {
         method: "POST",
         mode: "no-cors",
@@ -108,6 +107,7 @@ const Productform = () => {
       setPrice("");
       setDescription("");
       setSku("");
+      setImage("");
     } else {
       alert("Unable to add the product, Please try again later.");
       // Reload captcha
@@ -163,13 +163,14 @@ const Productform = () => {
                 <label>Add Image</label>
                 <input
                   type="file"
+                  accept="image/*"
                   className="form-control w-2/3"
                   style={{ width: "100%", height: "40px" }}
                   onChange={handleImageChange}
                 />
               </div>
   
-              <div className="form-group flex flex-col gap-4">
+              {/* <div className="form-group flex flex-col gap-4">
                 <label>Units</label>
                 <input
                   type="text"
@@ -178,7 +179,7 @@ const Productform = () => {
                   value={units}
                   onChange={handleunitsChange}
                 />
-              </div>
+              </div> */}
   
               <div className="form-group flex flex-col gap-4">
                 <label>Description</label>
@@ -194,7 +195,7 @@ const Productform = () => {
               <div className="form-group flex flex-col gap-4">
                 <label>Price</label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control w-2/3"
                   style={{ width: "100%", height: "40px" }}
                   value={price}
@@ -205,7 +206,7 @@ const Productform = () => {
               <div className="form-group flex flex-col gap-4">
                 <label>Stock</label>
                 <input
-                  type="text"
+                 type="number"
                   className="form-control w-2/3"
                   style={{ width: "100%", height: "40px" }}
                   value={stock}
