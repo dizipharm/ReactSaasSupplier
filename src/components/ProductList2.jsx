@@ -20,7 +20,7 @@ const ProductList2 = () => {
 
       try {
 
-        const response = await axios.get('https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product');
+        const response = await axios.get('https://ce7ilz7f17.execute-api.eu-west-2.amazonaws.com/prod/product');
 
         //setData(response.data);
 
@@ -55,9 +55,9 @@ const ProductList2 = () => {
   }, [sortOrder]);
 
   const handleDelete = async (id) => {
-    //https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/{id}
+    //https://ce7ilz7f17.execute-api.eu-west-2.amazonaws.com/prod/product/{id}
     try {
-      await axios.delete(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+      await axios.delete(`https://ce7ilz7f17.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
       window.location.reload(); // Redirect to product list after deletion
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -72,7 +72,7 @@ const ProductList2 = () => {
     const updatedProduct = { ...productToUpdate, publish: !productToUpdate.publish };
 
     // Send a POST request to the second API (https://product2/prod) to update the publish status
-    fetch(`https://hf06lm5qnk.execute-api.eu-west-2.amazonaws.com/prod/market/`, {
+    fetch(`https://b67uurf3uk.execute-api.eu-west-2.amazonaws.com/prod/market/`, {
       method: 'POST',
       mode:'no-cors',
       headers: {
@@ -196,7 +196,7 @@ const ProductList2 = () => {
             <td>{product.name}</td>
             <td><span style={{color:'#4682b4',fontWeight:'bold'}}>Description</span>:{product.description}
             <br></br>
-            <span style={{color:'#006a4e',fontWeight:'bold'}}>Units</span>:{product.units}
+            <span style={{color:'#006a4e',fontWeight:'bold'}}>Stock</span>:{product.stock}
             <br>
             </br>
             <span style={{color:'#c80815',fontWeight:'bold'}}>SKU</span>:{product.sku}

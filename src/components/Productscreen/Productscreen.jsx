@@ -13,7 +13,7 @@ const Productscreen = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+        const response = await axios.get(`https://ce7ilz7f17.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
         setProduct(response.data.body)
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -25,7 +25,7 @@ const Productscreen = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://s9ohghbzh7.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+      await axios.delete(`https://ce7ilz7f17.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
       navigate("/products"); // Redirect to product list after deletion
     } catch (error) {
       console.error("Error deleting product:", error);
