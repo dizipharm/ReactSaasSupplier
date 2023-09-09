@@ -192,7 +192,7 @@ const ProductList2 = () => {
       .map((product) => (
           <tr key={product.id}>
             <td>
-              <img src={Imagenew} style={{ maxWidth: '100px' }} />
+              <img src={`${product.imageUrl}/${product.image}`} style={{ maxWidth: '100px' }} />
             </td>
             <td>{product.name}</td>
             <td><span style={{color:'#4682b4',fontWeight:'bold'}}>Description</span>:{product.description}
