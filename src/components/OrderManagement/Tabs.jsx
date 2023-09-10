@@ -138,7 +138,7 @@ function Orders() {
                   <td>{item.productName}</td>
                   <td>{item.quantity}</td>
                   <td>{item.price}</td>
-                  <td>{item.materialSpecification}</td>
+                  <td>{item.materialSpecification.name}</td>
                 </tr>
               ))}
             </tbody>
