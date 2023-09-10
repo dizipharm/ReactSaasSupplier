@@ -41,7 +41,7 @@ const Productscreen = () => {
      <Container fluid>
       <Row>
         <Col md={4}>
-        <Image src={Imagenew} fluid/>
+        <Image  src={`${product.imageUrl}/${product.image}`} fluid/>
         </Col>
         <Col md={4}>
             <ListGroup variant='flush'>
@@ -53,7 +53,7 @@ const Productscreen = () => {
                     text={`${product.numReviews} reviews`} />
                 </ListGroup.Item> */}
                                 <ListGroup.Item>
-                   MaterialSpecifications: {product.materialSpecification}
+                   MaterialSpecifications: {product.materialSpecification.name}
                 </ListGroup.Item>
                 <ListGroup.Item>
                    Description: {product.description}
@@ -61,9 +61,9 @@ const Productscreen = () => {
                 <ListGroup.Item>
                    Sku: {product.sku}
                 </ListGroup.Item>
-                <ListGroup.Item>
+                {/* <ListGroup.Item>
                    Units: {product.units}
-                </ListGroup.Item>
+                </ListGroup.Item> */}
                 <ListGroup.Item>
                 Publish: {product.publish ? 'Published' : 'Unpublished'}
                 </ListGroup.Item>
