@@ -71,12 +71,19 @@ const Productform = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const materialSpecIndex = materialSpecList.findIndex(
+      (material) => material.material_specification === materialSpecification
+    );
+
     // Submit form data to backend API
     const data = {
       name,
       units,
       stock,
-      materialSpecification,
+      materialSpecification: {
+        name: materialSpecification, // Send the name
+        index: materialSpecIndex+1,    // Send the index
+      },
       price,
       description,
       sku,
@@ -95,7 +102,7 @@ const Productform = () => {
         body: JSON.stringify(data),
       }
     );
-
+console.log(data)
     if (response) {
       alert("Product added successfully!");
       // Clear form input fields and reload captcha
@@ -150,8 +157,8 @@ const Productform = () => {
                   <option>Select the Material</option>
                   {materialSpecList.map((material, index) => (
                     <option
-                      key={index + 1}
-                      value={material["material_specification"]}
+                      key={index }
+                      value={material[index]}
                     >
                       {material["material_specification"]}
                     </option>
