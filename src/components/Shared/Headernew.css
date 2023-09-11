@@ -1,5 +1,6 @@
 .header{
  display: flex;
+ justify-content: space-between;
  color: rgb(30, 118, 147);
  gap: 4px;
 
