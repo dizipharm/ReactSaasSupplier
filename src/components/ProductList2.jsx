@@ -202,7 +202,11 @@ const ProductList2 = () => {
             </br>
             <span style={{color:'#c80815',fontWeight:'bold'}}>SKU</span>:{product.sku}
             </td>
-            <td>Co2</td>
+            <td>
+            <Link to="https://esg-s3-images.s3.eu-west-2.amazonaws.com/images/Generic_EPD.pdf" target="_blank" style={{textDecoration:"none"}}>
+        EPD link
+      </Link>
+            </td>
             <td>£{product.price}</td>
             <td className={product.publish === 'False' ? 'red-text' : 'green-text'}>
                 {product.publish ? 'True' : 'False'}
