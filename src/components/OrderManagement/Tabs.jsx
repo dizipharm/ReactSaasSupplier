@@ -84,7 +84,7 @@ function Orders() {
             <th>Order placed by</th>
             <th>Status</th>
             <th>Address</th>
-            <th>Actions</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
