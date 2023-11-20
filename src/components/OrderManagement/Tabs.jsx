@@ -11,7 +11,7 @@ function Orders() {
 
   // Fetch data from the API
   useEffect(() => {
-    fetch('https://n4dwstzali.execute-api.eu-west-2.amazonaws.com/prod/basket')
+    fetch('https://vn8dz4msfe.execute-api.eu-west-2.amazonaws.com/prod/basket')
       .then((response) => response.json())
       .then((responseData) => {
         setData(responseData.body);
@@ -35,7 +35,7 @@ function Orders() {
     const updatedProduct = { ...productToUpdate, publish: !productToUpdate.publish };
 
     // Send a POST request to the second API (https://product2/prod) to update the publish status
-    fetch(`https://n4dwstzali.execute-api.eu-west-2.amazonaws.com/prod/basket/ad35f812-9c79-46a7-9ec3-eff7d11b2023`, {
+    fetch(`https://vn8dz4msfe.execute-api.eu-west-2.amazonaws.com/prod/basket/`, {
       method: 'PUT',
       // mode:'no-cors',
       headers: {
