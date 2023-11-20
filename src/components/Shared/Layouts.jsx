@@ -12,11 +12,11 @@ const Layouts=({signOut,children}) =>{
         {children}
       </div>
 
-      <div style={{ display: 'flex', marginTop: '50px' }}>
-        <div style={{ width: '20%', height: '100vh', overflow: 'auto' }}>
+      <div style={{ display: 'flex', marginTop: '50px', gap: "10px"}}>
+        <div style={{ width: '20%', height: '100vh',  }}>
           <Sidebar />
         </div>
-        <div style={{ flex: 1, overflow: 'auto', marginTop:"20px"}}>
+        <div style={{ flex: 1, overflow: 'auto', marginTop:"20px", width:"screen"}}>
           <Outlet />
         </div>
       </div>
