@@ -30,7 +30,7 @@ const App = () => {
       <Router>
         <Routes>
           {/* <Route path="/" element={<Login />} /> */}
-          <Route path="/" element={<Layouts />} signOut={signOut}>
+          <Route path="/" element={<Layouts signOut={signOut}  />} >
             <Route index element={<Dashboard />} />
             <Route path="products" element={<Products />} />
             <Route path="addproduct" element={<Addproduct />} />
@@ -42,10 +42,10 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
-<div style={{display:"flex"}}>
+{/* <div style={{display:"flex"}}>
 <h1>Hello {user.username}</h1>
 <button onClick={signOut}>signout</button>
-</div>
+</div> */}
     
       </main>
       )}

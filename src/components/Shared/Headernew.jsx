@@ -1,6 +1,6 @@
 import React from 'react'
 import {LinkContainer} from 'react-router-bootstrap'
-import{ Navbar, Container, Nav} from 'react-bootstrap'
+import{ Navbar, Container, Nav, Button} from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom';
 import Imagenew from './../../assets/Images/logo.png'
 import './Headernew.css'
@@ -46,6 +46,7 @@ const Headernew = ({signOut}) => {
             </div>
             
           </Nav>
+          
          
           <Dropdown >
       <Dropdown.Toggle  id="dropdown-basic" >
@@ -55,9 +56,13 @@ const Headernew = ({signOut}) => {
       <Dropdown.Menu style={{ width:"10%"}} >
         <Dropdown.Item href="#/action-1" >User</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Settings</Dropdown.Item>
-        {/* <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+        <Dropdown.Item onClick={signOut} >Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
+
+  
+
+   
         </Container>
        
       </Navbar>
