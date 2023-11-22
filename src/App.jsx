@@ -13,6 +13,7 @@ import {Amplify,Auth} from "aws-amplify"
 import awsconfig from "./aws-exports";
 import {Authenticator, withAuthenticator} from "@aws-amplify/ui-react"
 import Editproduct from "./components/Productscreen/Editproduct";
+import '@aws-amplify/ui-react/styles.css';
 
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
