@@ -41,8 +41,8 @@ const Productscreen = () => {
      <Container fluid>
       <Row>
         <Col md={4}>
-        {/* <Image  src={`${product.imageUrl}/${product.image}`} fluid/> */}
-        <Image  src={Imagenew} fluid/>
+        <Image  src={`${product.imageUrl}/${product.image}`} fluid/> 
+        {/* <Image  src={Imagenew} fluid/> */}
 
         </Col>
         <Col md={4}>
