@@ -1,0 +1,32 @@
+.header{
+ display: flex;
+ justify-content: space-between;
+ color: rgb(30, 118, 147);
+ gap: 4px;
+
+}
+
+/* Headernew.css */
+.navbar-nav .nav-link {
+    color: rgb(30, 118, 147);
+}
+.navbar-nav .nav-link:hover {
+    color:#ffa500; 
+}
+  
+  .navbar-nav .nav-link.active {
+    color:#ffa500;  }
+  
+  .dropdown-menu .dropdown-item {
+    color: rgb(30, 118, 147);
+}
+.dropdown-menu .dropdown-item:hover {
+    color:#ffa500;  
+}
+  
+  .dropdown-menu .dropdown-item.active {
+    color:#ffa500;  }
+
+    
+  
+  

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button, Container } from 'react-bootstrap'
 import Imagenew from "../../assets/Images/938.jpg"
 
@@ -8,13 +8,13 @@ import Imagenew from "../../assets/Images/938.jpg"
 const Productscreen = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
-  const {adminId} = useParams();
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://1dd91932-6f58-48e7-83be-bb5085b0f9a3.mock.pstmn.io/products/${id}`);
-        setProduct(response.data);
+        const response = await axios.get(`https://4v9d1i86zf.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+        setProduct(response.data.body)
       } catch (error) {
         console.error('Error fetching product:', error);
       }
@@ -22,6 +22,15 @@ const Productscreen = () => {
 
     fetchProduct();
   }, [id]);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`https://4v9d1i86zf.execute-api.eu-west-2.amazonaws.com/prod/product/${id}`);
+      navigate("/products"); // Redirect to product list after deletion
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
 
   if (!product) {
     return <div>Loading...</div>;
@@ -32,7 +41,9 @@ const Productscreen = () => {
      <Container fluid>
       <Row>
         <Col md={4}>
-        <Image src={Imagenew} fluid/>
+        <Image  src={`${product.imageUrl}/${product.image}`} fluid/> 
+        {/* <Image  src={Imagenew} fluid/> */}
+
         </Col>
         <Col md={4}>
             <ListGroup variant='flush'>
@@ -43,10 +54,23 @@ const Productscreen = () => {
                     <Rating value={product.rating} 
                     text={`${product.numReviews} reviews`} />
                 </ListGroup.Item> */}
+                                <ListGroup.Item>
+                   MaterialSpecifications: {product.materialSpecification.name}
+                </ListGroup.Item>
                 <ListGroup.Item>
                    Description: {product.description}
                 </ListGroup.Item>
+                <ListGroup.Item>
+                   Sku: {product.sku}
+                </ListGroup.Item>
+                {/* <ListGroup.Item>
+                   Units: {product.units}
+                </ListGroup.Item> */}
+                <ListGroup.Item>
+                Publish: {product.publish ? 'Published' : 'Unpublished'}
+                </ListGroup.Item>
             </ListGroup>
+            
              </Col>
              <Col md={2}>
                 <Card>
@@ -57,7 +81,7 @@ const Productscreen = () => {
                                 Price:
                                  </Col>
                                 <Col>
-                                <strong>Rs.{product.price}</strong>
+                                <strong>£{product.price}</strong>
                                 </Col>
                             </Row>
                         </ListGroup.Item>
@@ -68,16 +92,17 @@ const Productscreen = () => {
                                  </Col>
                                 <Col>
                                {/* {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'} */}
-                               In Stock
+                              {product.stock}
                                 </Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item style={{ display:"flex", flexFlow:"column", gap:"5px"}}>
                           
-                            <Button  type='button' >
+                          <Link  to={`/editproduct/${product.id}`}>  <Button  type='button' >
                                 Edit
                             </Button>
-                            <Button variant="danger" type='button' >
+                            </Link>
+                            <Button variant="danger" type='button' onClick={handleDelete} >
                                 Delete
                             </Button>
                         </ListGroup.Item>

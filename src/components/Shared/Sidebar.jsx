@@ -14,7 +14,7 @@ const Sidebar = () => {
     <div className="sidenav">
       <ul >
         <li>
-		<Link to={`/dashboard`}>
+		<Link to={` `}>
           <button
             className={`menu ${activeMenu === 'dashboard' ? 'active' : ''}`}
             onClick={() => handleMenuClick('dashboard')}
@@ -25,29 +25,19 @@ const Sidebar = () => {
 		  </Link>
         </li>
         <li>
+		<Link to={`/products`}>
           <button
             className={`menu ${activeMenu === 'products' ? 'active' : ''}`}
             onClick={() => handleMenuClick('products')}
           >
-            Products
+		Products
+            
           </button>
-          {activeMenu === 'products' && (
-            <ul className="submenu">
-              <li>
-                <Link to={`/dashboard/products`} >All Products</Link>
-              </li>
-              <li>
-                <Link to={`/dashboard/addproduct`}>Add Product</Link>
-              </li>
-              <li>
-                <Link to={`/dashboard/upload`}>Upload </Link>
-              </li>
-            </ul>
-          )}
+		  </Link>
         </li>
 
         <li>
-		<Link to={`/dashboard/ordermanagement`}>
+		<Link to={`/ordermanagement`}>
           <button
             className={`menu ${activeMenu === 'ordermanagement' ? 'active' : ''}`}
             onClick={() => handleMenuClick('ordermanagement')}
@@ -68,7 +58,7 @@ const Sidebar = () => {
           {activeMenu === 'orders' && (
             <ul className="submenu">
               <li>
-                <Link to={`/dashboard/myorders`}>My Orders</Link>
+                <Link to={` /myorders`}>My Orders</Link>
               </li>
               <li>
                 <a href="#">New Orders</a>
@@ -83,7 +73,7 @@ const Sidebar = () => {
           )}
         </li> */}
 		<li>
-		<Link to={`/dashboard/location`}>
+		<Link to={`/location`}>
           <button
             className={`menu ${activeMenu === 'manage' ? 'active' : ''}`}
             onClick={() => handleMenuClick('manage')}
@@ -93,40 +83,41 @@ const Sidebar = () => {
           </button>
 		  </Link>
         </li>
-		<li>
-		<Link to="/dashboard/trackandtrace">
+        <li>
+		<Link to="/shipments">
           <button
-            className={`menu ${activeMenu === 'trackandtrace' ? 'active' : ''}`}
-            onClick={() => handleMenuClick('trackandtrace')}
+            className={`menu ${activeMenu === 'shipments' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('shipments')}
           >
-			Track & Trace Shipment
+	Shipments
             
           </button>
 		  </Link>
         </li>
+	
         <li>
-		<Link to="/dashboard/smartanalytics">
+		<Link to="/smartcontract">
           <button
-            className={`menu ${activeMenu === 'smartanalytics' ? 'active' : ''}`}
-            onClick={() => handleMenuClick('smartanalytics')}
+            className={`menu ${activeMenu === 'smartcontract' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('smartcontract')}
           >
-			Smart Analytics
+			Smart Contracts
           </button>
 		  </Link>
         </li>
         <li>
-		<Link to="/dashboard/productenquiries">
+		<Link to="/reports">
           <button
-            className={`menu ${activeMenu === 'productenquiries' ? 'active' : ''}`}
-            onClick={() => handleMenuClick('productenquiries')}
+            className={`menu ${activeMenu === 'reports' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('reports')}
           >
-			Product Enquiries
+		Reports
             
           </button>
 		  </Link>
         </li>
     		<li>
-		<Link to="/dashboard/admin">
+		<Link to="/admin">
           <button
             className={`menu ${activeMenu === 'admin' ? 'active' : ''}`}
             onClick={() => handleMenuClick('admin')}
@@ -135,6 +126,28 @@ const Sidebar = () => {
             
           </button>
 		  </Link>
+        </li>
+
+        <li>
+          <button
+            className={`menu ${activeMenu === 'prdmgt' ? 'active' : ''}`}
+            onClick={() => handleMenuClick('prdmgt')}
+          >
+            Product Management
+          </button>
+          {activeMenu === 'prdmgt' && (
+            <ul className="submenu">
+              <li>
+                <Link to={`/addproduct`} >Single Items</Link>
+              </li>
+              <li>
+                <Link to={`/upload`}>Bulk Upload</Link>
+              </li>
+              <li>
+                <Link to={`/updateepd`}>Update EPD </Link>
+              </li>
+            </ul>
+          )}
         </li>
       </ul>
     </div>
