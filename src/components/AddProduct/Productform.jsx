@@ -1,245 +1,252 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
-import { Form, Button, FormSelect } from 'react-bootstrap';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
-import { getElementGroupList, getMaterialsList, getStructuralList } from '../Services/materialService';
-
- 
+import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
+import {
+  getElementGroupList,
+  getMaterialsList,
+  getStructuralList,
+} from "../Services/materialService";
 
 const Productform = () => {
+  const [name, setName] = useState("");
+  const [materialSpecification, setMaterialSpecification] = useState("");
+  const [units, setUnits] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [stock, setStock] = useState("");
+  const [sku, setSku] = useState("");
+  const [image, setImage] = useState(null);
+  const [materialSpecList, setMaterialSpecList] = useState([]);
+  // const [message, setMessage] = useState("");
+  // const [attachment, setAttachment] = useState(null);
 
- 
+  // const handleAttachmentChange = (event) => {
+  //   const file = event.target.files[0];
+  //   setAttachment(file);
+  // };
 
-  const [formData, setFormData] = useState({
-
+  useEffect(() => {
+    getMaterialsList()
+      .then((res) => {
+        setMaterialSpecList(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []); // Empty dependency array
   
 
-    // Initialize state for the form data you want to send in the request
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const handleMaterialSpecificationChange = (event) => {
+    setMaterialSpecification(event.target.value);
+  };
+  
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+  };
+  const handledescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+  const handlepriceChange = (event) => {
+    setPrice(event.target.value);
+  };
+  const handleskuChange = (event) => {
+    setSku(event.target.value);
+  };
 
- 
+  const handleunitsChange = (event) => {
+    setUnits(event.target.value);
+  };
 
-    // Example:
+  const handlestockNumberChange = (event) => {
+    setStock(event.target.value);
+  };
 
- 
+  // const handleMessageChange = (event) => {
+  //   setMessage(event.target.value);
+  // };
 
-productName: '',
-productDescription: '',
-sku: '',
-materialspecification:'',
-price:'',
-stock:'',
-units:''
-
- 
-
- 
-
-  });
-
- 
-
- 
-
- 
-  const [materialSpecList, setMaterialSpecList] = useState([]);
- 
-
-  const handleFormSubmit = (event) => {
-
- 
-
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
- 
-    // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
+    const materialSpecIndex = materialSpecList.findIndex(
+      (material) => material.material_specification === materialSpecification
+    );
 
- 
+    // Submit form data to backend API
+    const data = {
+      name,
+      units,
+      stock,
+      materialSpecification: {
+        name: materialSpecification, // Send the name
+        index: materialSpecIndex+1,    // Send the index
+      },
+      price,
+      description,
+      sku,
+      image,
+    };
 
-    // const apiEndpoint = 'https://example.com/api/endpoint';
-
- 
-
-    const apiEndpoint = 'http://localhost:8082/api/product';
-
-  
-
-     // Make the POST request
-
- 
-
-    axios.post(apiEndpoint, formData)
-
- 
-
-      .then((response) => {
-
- 
-
-        // Handle the response data here if needed
-
- 
-
-        console.log('Response:', response.data);
-
- 
-
-      })
-
- 
-
-      .catch((error) => {
-
- 
-
-        // Handle any errors that occurred during the request
-
- 
-
-        console.error('Error:', error);
-
- 
-
-      });
-
- 
-
+    const response = await fetch(
+      "https://4v9d1i86zf.execute-api.eu-west-2.amazonaws.com/prod/product",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+console.log(data)
+    if (response) {
+      alert("Product added successfully!");
+      // Clear form input fields and reload captcha
+      setName("");
+      setUnits("");
+      setStock("");
+      // setMessage("");
+      setMaterialSpecification("");
+      setPrice("");
+      setDescription("");
+      setSku("");
+      setImage("");
+    } else {
+      alert("Unable to add the product, Please try again later.");
+      // Reload captcha
+    }
   };
 
- 
 
- 
-
- 
-
- 
-
-  const handleInputChange = (event) => {
-
- 
-
-    const { name, value } = event.target;
-
- 
-
-    setFormData({
-
- 
-
-      ...formData,
-
- 
-
-      [name]: value,
-
- 
-
-    });
-
- 
-
-  };
-
- 
-
-
-const handleImageChange = (e) => {
-    const file = e.target.files?.[0];
-    setProductImage(file || null);
-  };
-
-useEffect(() => {
-    getMaterialsList()
-    .then((res) => {
-      setMaterialSpecList(res.data);
-      // console.log(res.data);
-      // console.log(materialSpecList);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  })
-
-
- 
 
   return (
-
- 
-
-<form onSubmit={handleFormSubmit} style={{display:"flex", flexDirection:"column", gap:"20px", justifyItems:"center", zIndex:"2px" }}>
-
- 
-
-      {/* Add your form fields here */}
-
- 
-
-<input type="text" name="productName" value={formData.productName} onChange={handleInputChange} placeholder="ProductName" />
-
- 
-
-<input type="text" name="productDescription" value={formData.productDescription} onChange={handleInputChange} placeholder="Product Description" />
-
- 
-
-<input type="text" name="sku" value={formData.message} onChange={handleInputChange} placeholder="sku"></input>
-
- 
-
-<input type="number" name="price" value={formData.price} onChange={handleInputChange} placeholder="price"></input>
-
- 
-
-{/* <input type="text" name="stock" value={formData.stock} onChange={handleInputChange} placeholder="stock"></input> */}
-
-<select
-value={formData.stock} onChange={handleInputChange}>
-<option disabled>Stock Update</option>
-<option>In stock</option>
-<option>Out of stock</option>
-</select>
- 
-
-<select onChange={handleInputChange}
-value={formData.materialspecification}>
-<option disabled>Select the Material</option>
-        {materialSpecList.map((material, index) => (
-<option key={index + 1} value={material['material_specification']+ ';' + (index+1)}>{material['material_specification']}</option>
+    <div style={{ width: "50%", height: "100vh" }}>
+    <div className="flex flex-col md:flex-row md:pl-12 gap-4">
+      <div className="md:w-1/2 pl-20 bg-gray-100 rounded-sm">
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group flex flex-col gap-4">
+              <div className="form-group flex flex-col gap-4">
+                <label className="text-xl">Product Name</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={name}
+                  onChange={handleNameChange}
+                />
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Material specifications</label>
+                <select
+                  onChange={handleMaterialSpecificationChange}
+                  value={materialSpecification}
+                  style={{
+                    width: "100%",
+                    height: "40px",
+                    padding: "8px", // Add padding to make the select field consistent
+                    border: "1px solid #ccc", // Add border for consistency
+                    borderRadius: "4px", // Add border radius
+                  }}
+                >
+                  <option>Select the Material</option>
+                  {materialSpecList.map((material, index) => (
+                    <option
+                      key={index }
+                      value={material[index]}
+                    >
+                      {material["material_specification"]}
+                    </option>
                   ))}
-</select>
-
- 
-
-<select onChange={handleInputChange}
-value={formData.units}>
-<option >Select the Unit</option>
-<option value="1">Euro</option>
-<option value="2">Pound</option>
-<option value="3">Dollar</option>
-</select>
-
- 
-
-<button type="submit">Submit</button>
-
- 
-
-</form>
-
- 
-
+                </select>
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Add Image</label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  onChange={handleImageChange}
+                />
+              </div>
+  
+              {/* <div className="form-group flex flex-col gap-4">
+                <label>Units</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={units}
+                  onChange={handleunitsChange}
+                />
+              </div> */}
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Description</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={description}
+                  onChange={handledescriptionChange}
+                />
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Price</label>
+                <input
+                  type="number"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={price}
+                  onChange={handlepriceChange}
+                />
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>Stock</label>
+                <input
+                 type="number"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={stock}
+                  onChange={handlestockNumberChange}
+                />
+              </div>
+  
+              <div className="form-group flex flex-col gap-4">
+                <label>SKU</label>
+                <input
+                  type="text"
+                  className="form-control w-2/3"
+                  style={{ width: "100%", height: "40px" }}
+                  value={sku}
+                  onChange={handleskuChange}
+                />
+              </div>
+  
+              <button
+                type="submit"
+                className=" "
+                style={{ width: "100%", marginTop: "10px", height: "40px" }}
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   );
-
- 
-
 };
-
- 
-
- 
-
- 
-
- 
 
 export default Productform;

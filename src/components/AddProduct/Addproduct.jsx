@@ -6,13 +6,11 @@ import Sidebar from '../Shared/Sidebar'
 const Addproduct = () => {
   return (
     <div>
-      
-      <div >
-       
-      <div>
+     
+      <div style={{zoom:'0.8'}}>
       <h2> Add Product</h2>
      <Productform/>
-      </div>
+     
       </div>
      
       

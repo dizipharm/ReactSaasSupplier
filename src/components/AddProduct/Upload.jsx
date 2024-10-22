@@ -13,6 +13,9 @@ const Upload = () => {
 
   return (
     <div >
+      <div style={{zoom:'0.8'}}>
+
+     
 <h3>Upload Products</h3>
     <p>Download the file and complete it and upload</p>
     <button className='btn w-fit ' onClick={handleClick}>Click here to download the file</button>
@@ -24,6 +27,7 @@ const Upload = () => {
     <Button style={{ width:"100px"}}>
       Upload   
     </Button>
+    </div>
     </div>
     </div>
   )

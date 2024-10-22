@@ -15,17 +15,10 @@ const Products = () => {
       <>
     
       <div>
-        <div >
-        
-       
-        <div>
+      
+        <div style={{zoom:'0.8'}}>
         <ProductList2/>
         </div>
-       
-       
-        </div>
-       
-        {/* Additional dashboard content */}
        
       </div>
      

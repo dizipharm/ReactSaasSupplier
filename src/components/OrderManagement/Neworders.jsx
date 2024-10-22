@@ -26,7 +26,10 @@ function Neworders() {
           <td>New</td>
           <td>
             <Button>
-                View
+                Accept
+            </Button>
+            <Button variant='danger'>
+                Reject
             </Button>
           </td>
 
@@ -40,7 +43,10 @@ function Neworders() {
           <td>New</td>
           <td>
             <Button>
-                View
+                Accept
+            </Button>
+            <Button variant='danger'>
+                Reject
             </Button>
           </td>
         </tr>
@@ -53,7 +59,10 @@ function Neworders() {
           <td>New</td>
           <td>
             <Button>
-                View
+                Accept
+            </Button>
+            <Button variant='danger'>
+                Reject
             </Button>
           </td>
         </tr>
