@@ -7,6 +7,9 @@ import Chart2 from './charts/Chart2';
 const Dashboard = () => {
   return (
     <div>
+      <div style={{zoom:'0.8' }}>
+
+    
       <div style={{display:'flex',gap:'1rem',height:'12rem'}}>
       <Card style={{ width: '18rem',marginTop:'1rem',padding:'1rem',backgroundImage:'linear-gradient(to right, #9370db, #483d8b)' }}>
       <Card.Title style={{color:'white'}}>Products</Card.Title>
@@ -66,6 +69,7 @@ const Dashboard = () => {
       <div style={{ marginTop:'2rem',display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
       <Chart1 />
       <Chart2 />
+    </div>
     </div>
     </div>
   )

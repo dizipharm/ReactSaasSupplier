@@ -5,7 +5,7 @@ import Productscreen from './Productscreen'
 
 const Product = () => {
   return (
-    <div style={{marginTop:"10px"}}>
+    <div style={{marginTop:"10px", zoom:'0.8'}}>
     
      <Productscreen/>
       </div>

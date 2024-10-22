@@ -7,7 +7,7 @@ const Location = () => {
   return (
     <div>
      
-      <div style={{display:"flex", gap:"10px"}}>
+      <div style={{display:"flex", gap:"10px", zoom:'0.8'}}>
        
       <div>
       <h2> Manage Location</h2>
